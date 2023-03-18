@@ -1,11 +1,10 @@
 import './App.css'
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Main } from './components/Main';
+import Main from './components/Main';
 import { About } from './components/About';
 import Header from './components/Header';
 import { NotFound } from './components/NotFound';
-
 
 class App extends React.Component {
 
