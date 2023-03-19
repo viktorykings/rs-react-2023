@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './components/Main';
@@ -7,21 +7,20 @@ import Header from './components/Header';
 import { NotFound } from './components/NotFound';
 
 class App extends React.Component {
-
-  render(){
+  render() {
     return (
-    <div className="App">
-      <BrowserRouter>
-      <Header/>
-        <Routes>
-          <Route path="/" element={<Main/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  )
+      <div className="App">
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/about" element={<About />} />
+            <Route path="blank" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
   }
 }
 
-export default App
+export default App;
