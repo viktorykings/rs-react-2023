@@ -1,17 +1,11 @@
-//https://64158b1d8b5d06e4a7b12b04.mockapi.io/cards/
 import React from 'react';
 import { CardProps, SearchState } from './types';
 
 export default class Card extends React.Component<CardProps, SearchState> {
   constructor(props: CardProps) {
     super(props);
-    this.state = {
-      value: localStorage.getItem('search') ?? '',
-    };
   }
-  componentWillUnmount(): void {
-    localStorage.setItem('search', this.state.value);
-  }
+
   render() {
     return (
       <div className="card">

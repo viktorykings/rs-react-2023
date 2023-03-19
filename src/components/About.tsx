@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const About = (): JSX.Element => {
-  return <div>About</div>;
+  return <div className="main">About</div>;
 };

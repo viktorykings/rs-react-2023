@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const NotFound = (): JSX.Element => {
-  return <div>404 Page Not Found</div>;
+  return <div className="main">404 Page Not Found</div>;
 };

@@ -9,10 +9,6 @@ export default class Main extends React.Component<MyProps, cardState> {
     this.state = { data: [] };
   }
   cardsData: CardProps[] = [];
-  // async fetchData(){
-  //   const data = await fetch('https://64158b1d8b5d06e4a7b12b04.mockapi.io/cards/');
-  //   console.log(data)
-  // }
   componentDidMount(): void {
     fetch('https://64158b1d8b5d06e4a7b12b04.mockapi.io/cards/venicles', {
       method: 'GET',
@@ -22,7 +18,6 @@ export default class Main extends React.Component<MyProps, cardState> {
         if (res.ok) {
           return res.json();
         }
-        // handle error
       })
       .then((data) => {
         console.log(data);
