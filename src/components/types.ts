@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export type MyProps = object;
 export interface CardProps {
   type: string;
@@ -16,3 +18,12 @@ export type MyGroupType = {
 };
 export type MyState = { page: string };
 export type SearchState = { value: string };
+export interface FormSetState {
+  createCard: (newCard: FormData) => void
+}
+export interface FormData {
+  name: string
+}
+export interface FormState {
+  data: FormData[]
+}

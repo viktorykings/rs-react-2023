@@ -19,6 +19,14 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  cursor: pointer;
+}
+input,
+button{
+  cursor: pointer;
+}
+select{
+  outline: none;
 }
 a:hover {
   color: #fff;
@@ -108,4 +116,70 @@ input{
 .image{
   width: 180px;
   height: 120px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.form label{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+.form input{
+  width: 300px;
+}
+.form input:focus{
+  border: 2px solid #25183b;
+}
+.form input:active{
+  border: none;
+}
+.radio-input{
+  width: 400px;
+}
+.radio-input label{
+  width: 50px;
+  margin: 0;
+}
+.form input[type=radio]{
+  width: 20px;
+  color: #6e5794;
+}
+.form input[type=text],
+.form input[type=date] {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 30px;
+}
+.form input[type=file]{
+  font-size: 12px;
+  border-radius: 5px;
+}
+.form input::file-selector-button {
+  font-weight: bold;
+  color: #6e5794;
+  padding: 0.5em;
+  width: 150px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form button{
+  width: 200px;
+    align-self: center;
+    height: 30px;
+    border: 1px solid gray;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+.form button:hover{
+  background-color: #2b1f3a;
+  color: #fff;
 }
