@@ -13,8 +13,9 @@ export default class Card extends React.Component<FormData, SearchState> {
         <div className="info">
           <h5>{this.props.name}</h5>
           <p>{this.props.surname}</p>
-          <p>{this.props.birthDate}</p>
+          <p>{this.props.isBirthDateVis && this.props.birthDate}</p>
           <p>{this.props.region}</p>
+          <p>{this.props.sex}</p>
           <p>{this.props.isBirthDateVis}</p>
         </div>
       </div>

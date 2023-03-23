@@ -54,6 +54,7 @@ export default class Main extends React.Component<MyProps, FormState> {
                   birthDate={el.birthDate}
                   isBirthDateVis={el.isBirthDateVis}
                   region={el.region}
+                  sex={el.sex}
                   profilePic={el.profilePic}
                   // model={el.model}
                   // avatar={el.avatar}

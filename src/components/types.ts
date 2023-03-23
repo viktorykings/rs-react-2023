@@ -27,11 +27,16 @@ export interface FormData {
   birthDate: string,
   isBirthDateVis: boolean,
   region: string,
-  male?: string,
-  female?: string,
-  other?: string,
+  male?: HTMLInputElement | null,
+  female?: HTMLInputElement | null,
+  other?: HTMLInputElement | null,
+  sex: string | null | undefined,
   profilePic: string,
+  errors?: Errors
 }
 export interface FormState {
   data: FormData[]
+}
+export interface Errors{
+  [key: string]: string;
 }

@@ -130,6 +130,7 @@ input{
   display: flex;
   justify-content: space-between;
   margin: 10px;
+  height: 42px;
 }
 .form input{
   width: 300px;
@@ -141,11 +142,18 @@ input{
   border: none;
 }
 .radio-input{
-  width: 400px;
+  align-self: center;
+  flex-direction: column;
+  width: auto;
 }
 .radio-input label{
   width: 50px;
   margin: 0;
+}
+.radio-input-container{
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
 }
 .checkbox-input{
   align-self: center;
@@ -154,6 +162,12 @@ input{
 .checkbox-input input{
   width: 30px;
   align-self: center;
+}
+.form .select-input,
+.form .checkbox-input,
+.form .radio-input,
+.form .radio-input label{
+  height: auto;
 }
 .form input[type=radio]{
   width: 20px;
@@ -190,4 +204,9 @@ input{
 .form button:hover{
   background-color: #2b1f3a;
   color: #fff;
+}
+.error{
+  color: red;
+  font-size: 12px;
+  margin: 1px 5px;
 }
