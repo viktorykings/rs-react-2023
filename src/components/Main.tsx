@@ -50,11 +50,11 @@ export default class Main extends React.Component<MyProps, FormState> {
                 <Card
                   key={id}
                   name={el.name}
-                  // id={el.id}
-                  // venicle={el.venicle}
-                  // type={el.type}
-                  // description={el.description}
-                  // fuel={el.fuel}
+                  surname={el.surname}
+                  birthDate={el.birthDate}
+                  isBirthDateVis={el.isBirthDateVis}
+                  region={el.region}
+                  profilePic={el.profilePic}
                   // model={el.model}
                   // avatar={el.avatar}
                 />

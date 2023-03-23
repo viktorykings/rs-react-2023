@@ -147,6 +147,14 @@ input{
   width: 50px;
   margin: 0;
 }
+.checkbox-input{
+  align-self: center;
+  width: 150px;
+}
+.checkbox-input input{
+  width: 30px;
+  align-self: center;
+}
 .form input[type=radio]{
   width: 20px;
   color: #6e5794;

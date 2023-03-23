@@ -22,7 +22,15 @@ export interface FormSetState {
   createCard: (newCard: FormData) => void
 }
 export interface FormData {
-  name: string
+  name: string,
+  surname: string,
+  birthDate: string,
+  isBirthDateVis: boolean,
+  region: string,
+  male?: string,
+  female?: string,
+  other?: string,
+  profilePic: string,
 }
 export interface FormState {
   data: FormData[]

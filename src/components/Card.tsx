@@ -9,13 +9,13 @@ export default class Card extends React.Component<FormData, SearchState> {
   render() {
     return (
       <div className="card">
-        {/* <img src={this.props.avatar} alt="img" className="image" /> */}
+        <img src={`http://127.0.0.1:5173/${this.props.profilePic}`} alt="img" className="image" />
         <div className="info">
           <h5>{this.props.name}</h5>
-          {/* <p>{this.props.model}</p>
-          <p>{this.props.description}</p>
-          <p>{this.props.type}</p>
-          <p>{this.props.fuel}</p> */}
+          <p>{this.props.surname}</p>
+          <p>{this.props.birthDate}</p>
+          <p>{this.props.region}</p>
+          <p>{this.props.isBirthDateVis}</p>
         </div>
       </div>
     );
