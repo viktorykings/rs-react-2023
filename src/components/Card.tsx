@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardProps, SearchState, FormData } from './types';
+import { SearchState, FormData } from './types';
 
 export default class Card extends React.Component<FormData, SearchState> {
   constructor(props: FormData) {

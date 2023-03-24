@@ -24,7 +24,7 @@ export default class Search extends React.Component<MyProps, SearchState> {
           value={this.state.value}
           onChange={(e) => {
             this.setState({ value: e.target.value });
-            console.log(this.state)
+            console.log(this.state);
           }}
         />
       </div>
