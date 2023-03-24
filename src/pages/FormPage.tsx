@@ -1,14 +1,13 @@
-import Card from '../components/Card';
 import Form from '../components/Form';
 import { MyProps, MainState, FormData } from '../components/types';
-import React, { Component } from 'react';
+import React from 'react';
 import CardsContainer from '../components/CardsContainer';
 
 export default class FormPage extends React.Component<MyProps, MainState> {
   constructor(props: MyProps) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
     this.createCard = this.createCard.bind(this);
   }

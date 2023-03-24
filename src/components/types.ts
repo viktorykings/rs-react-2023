@@ -26,6 +26,7 @@ export interface FormData {
   female?: HTMLInputElement | null;
   other?: HTMLInputElement | null;
   sex: string | null | undefined;
+  personalData: boolean;
   profilePic: string;
   errors?: Errors;
 }
@@ -35,7 +36,11 @@ export interface MainState {
 export interface FormState {
   data: FormData[];
   errors: Errors;
+  saved: boolean
 }
 export interface Errors {
   [key: string]: string;
+}
+export interface ModalState{
+  saved : boolean
 }

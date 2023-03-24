@@ -1,4 +1,5 @@
 import React, { FormEvent } from 'react';
+import SuccessModal from './SuccessModal';
 import { FormState, FormData, FormSetState, Errors } from './types';
 
 export default class Form extends React.Component<FormSetState, FormState> {
@@ -11,11 +12,13 @@ export default class Form extends React.Component<FormSetState, FormState> {
   female: React.RefObject<HTMLInputElement>;
   other: React.RefObject<HTMLInputElement>;
   profilePic: React.RefObject<HTMLInputElement>;
+  personalData: React.RefObject<HTMLInputElement>;
   constructor(props: FormSetState) {
     super(props);
     this.state = {
       data:[],
       errors: {},
+      saved: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.name = React.createRef();
@@ -27,6 +30,7 @@ export default class Form extends React.Component<FormSetState, FormState> {
     this.female = React.createRef();
     this.other = React.createRef();
     this.profilePic = React.createRef();
+    this.personalData = React.createRef()
   }
 
   handleSubmit(e: FormEvent) {
@@ -42,18 +46,32 @@ export default class Form extends React.Component<FormSetState, FormState> {
       region: this.region.current?.value ? this.region.current?.value : '',
       profilePic: this.profilePic.current?.value ? this.profilePic.current?.value : '',
       sex: this.chooseSex() ? this.chooseSex() : '',
+      personalData: this.personalData.current?.checked ? this.personalData.current?.checked : false
     };
 
     const isValid = this.validateFormData(newCard);
     if (isValid) {
       console.log('card created')
       this.props.createCard(newCard);
+      this.clearForm()
+      this.setState({saved: true})
+      setTimeout(() => {
+        this.setState({saved: false})
+      }, 3000)
     }
   }
   validateFormData(newCard: FormData) {
-    const { name, surname, birthDate } = newCard;
-    let isValid = true;
     const errors: Errors = {};
+    let isValid = true;
+    isValid = this.validateEmpty(newCard, isValid, errors)
+    isValid = this.validateChoose(newCard, isValid, errors)
+    isValid = this.validateDates(newCard, isValid, errors)
+    console.log('err', errors);
+    this.setState({ errors: errors });
+    return isValid;
+  }
+  validateEmpty(newCard: FormData, isValid: boolean, errors: Errors){
+    const { name, surname, birthDate, profilePic} = newCard;
     if (name.trim().length < 4) {
       errors.name = 'Name must have length of 4 or higher!';
       isValid = false;
@@ -66,14 +84,39 @@ export default class Form extends React.Component<FormSetState, FormState> {
       errors.birthDate = 'Field must not be empty!';
       isValid = false;
     }
+    if(!profilePic){
+      errors.profilePic = 'Add file';
+      isValid = false;
+    }
+
+    return isValid;
+  }
+  validateChoose(newCard: FormData, isValid: boolean, errors: Errors){
+    const { region, personalData } = newCard;
     const sex = this.chooseSex();
     if (!sex) {
       errors.sex = 'Value must be choosen';
       isValid = false;
     }
-    console.log('err', errors);
-    this.setState({ errors: errors });
+    if(!region){
+      errors.region = 'Value must be choosen';
+      isValid = false;
+    }
+    if(!personalData){
+      errors.personalData = 'You must accept the terms of use';
+      isValid = false;
+    }
     return isValid;
+  }
+  validateDates(newCard: FormData, isValid: boolean, errors: Errors){
+    const { birthDate } = newCard;
+    const currDate = Date.now()
+    const inputDate = Date.parse(birthDate)
+    if(currDate < inputDate){
+      errors.birthDate = 'Enter correct date';
+      isValid = false;
+    }
+    return isValid
   }
   chooseSex() {
     const male = this.male.current ? this.male.current : null;
@@ -92,10 +135,23 @@ export default class Form extends React.Component<FormSetState, FormState> {
       return other?.id;
     }
   }
+  clearForm(){
+    this.name.current!.value = '';
+    this.surname.current!.value = '';
+    this.birthDate.current!.value = '';
+    this.isBirthDateVis.current!.value = '';
+    this.region.current!.value = '';
+    this.male.current!.checked = false;
+    this.female.current!.checked = false;
+    this.other.current!.checked = false;
+    this.profilePic.current!.value = '';
+    this.personalData.current!.checked = false;
+  }
 
   render() {
     return (
-      <form action="" className="form" onSubmit={this.handleSubmit}>
+      <div className="form-container">
+              <form action="" className="form"  onSubmit={this.handleSubmit}>
         <label>
           Name
           <div>
@@ -122,6 +178,7 @@ export default class Form extends React.Component<FormSetState, FormState> {
         </label>
         <label className="select-input">
           Region
+          <div>
           <select name="selectedRegion" ref={this.region}>
             <option value="Europe">Europe</option>
             <option value="North America">North America</option>
@@ -131,6 +188,8 @@ export default class Form extends React.Component<FormSetState, FormState> {
             <option value="Australia">Australia</option>
             <option value="Antarctica">Antarctica</option>
           </select>
+          {this.state.errors?.region && <p className="error">{this.state.errors.region}</p>}
+                    </div>
         </label>
         <label className="radio-input">
           <div className="radio-input-container">
@@ -148,10 +207,22 @@ export default class Form extends React.Component<FormSetState, FormState> {
         </label>
         <label>
           Add profile picture
-          <input type="file" name="profile-picture" id="profilePicture" ref={this.profilePic} />
+          <div>
+                      <input type="file" name="profile-picture" id="profilePicture" ref={this.profilePic} />
+          {this.state.errors?.profilePic && <p className="error">{this.state.errors.profilePic}</p>}
+          </div>
         </label>
+        <div className="terms">
+        <label className="checkbox-input">
+        I consent to my personal data <input type="checkbox" ref={this.personalData} />
+        </label>
+        {this.state.errors?.personalData && <p className="error">{this.state.errors.personalData}</p>}
+        </div>
         <button type="submit">Create</button>
       </form>
+      <SuccessModal saved={this.state.saved} />
+      </div>
+
     );
   }
 }

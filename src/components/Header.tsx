@@ -28,6 +28,13 @@ export default class Header extends React.Component<MyProps, MyState> {
           >
             About Us
           </Link>
+          <Link
+            to="form"
+            onClick={() => this.setState({ page: 'form' })}
+            className={this.state.page === 'form' ? 'active' : ''}
+          >
+            Create card
+          </Link>
         </nav>
       </header>
     );

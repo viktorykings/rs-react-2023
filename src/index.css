@@ -71,7 +71,7 @@ h1 {
   align-items: center;
 }
 .nav{
-  width: 200px;
+  width: 400px;
   display: flex;
   justify-content: space-between;
 }
@@ -104,6 +104,7 @@ input{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0 auto;
 }
 .card{
   height: 300px;
@@ -117,11 +118,14 @@ input{
   width: 180px;
   height: 120px;
 }
+.form-container{
+  height: 100%;
+}
 .form{
   display: flex;
   flex-direction: column;
   width: 500px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 10px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -157,17 +161,22 @@ input{
 }
 .checkbox-input{
   align-self: center;
-  width: 150px;
+  width: 250px;
 }
 .checkbox-input input{
   width: 30px;
   align-self: center;
 }
-.form .select-input,
 .form .checkbox-input,
-.form .radio-input,
 .form .radio-input label{
   height: auto;
+}
+.form .select-input,
+.form .radio-input{
+  height: 38px;
+}
+.select-input select{
+  width: 150px;
 }
 .form input[type=radio]{
   width: 20px;
@@ -209,4 +218,32 @@ input{
   color: red;
   font-size: 12px;
   margin: 1px 5px;
+}
+.terms{
+  width: 250px;
+  align-self: center;
+  height: 50px;
+}
+.terms label{
+  margin: 0;
+}
+.success-modal{
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: -100%;
+  transition: all 0.5s ease;
+}
+.success-modal-visible{
+  position: absolute;
+  height: 50px;
+  width: 250px;
+  background-color: rgb(56, 151, 56);
+  border-radius: 5px;
+  top: 50px;
+  right: 10px;
+  transition: all 0.5s ease;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
 }

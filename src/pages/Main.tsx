@@ -13,6 +13,7 @@ export default class Main extends React.Component<MyProps, MainState> {
       region: 'string',
       sex: 'string | null | undefined',
       profilePic: 'string',
+      personalData: true
     }] };
   }
   cardsData: FormData[] = [];
