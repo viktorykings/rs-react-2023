@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Card.tsx</title>
+    <title>Code coverage report for src/pages/FormPage.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Card.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> FormPage.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>23/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/3</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>23/25</span>
             </div>
         
             
@@ -87,50 +87,53 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { SearchState, FormData } from './types';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Form from '../components/Form';
+import { MyProps, MainState, FormData } from '../components/types';
+import React from 'react';
+import CardsContainer from '../components/CardsContainer';
 &nbsp;
-export default class Card extends React.Component&lt;FormData, SearchState&gt; {
-  constructor(props: FormData) {
+export default class FormPage extends React.Component&lt;MyProps, MainState&gt; {
+  constructor(props: MyProps) {
     super(props);
+    this.state = {
+      data: [],
+    };
+    this.createCard = this.createCard.bind(this);
   }
-&nbsp;
+<span class="fstat-no" title="function not covered" >  createCard(newCard: FormData) {</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({ data: [...this.state.data, newCard] });</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
   render() {
     return (
-      &lt;div className="card"&gt;
-        &lt;img src={`http://127.0.0.1:5173/${this.props.profilePic}`} alt="img" className="image" /&gt;
-        &lt;div className="info"&gt;
-          &lt;h5&gt;{this.props.name}&lt;/h5&gt;
-          &lt;p&gt;{this.props.surname}&lt;/p&gt;
-          &lt;p&gt;{this.props.isBirthDateVis &amp;&amp; this.props.birthDate}&lt;/p&gt;
-          &lt;p&gt;{this.props.region}&lt;/p&gt;
-          &lt;p&gt;{this.props.sex}&lt;/p&gt;
-          &lt;p&gt;{this.props.isBirthDateVis}&lt;/p&gt;
-        &lt;/div&gt;
+      &lt;div className="container"&gt;
+        &lt;Form createCard={this.createCard} /&gt;
+        &lt;CardsContainer data={this.state.data} /&gt;
       &lt;/div&gt;
     );
   }

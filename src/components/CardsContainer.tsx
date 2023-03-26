@@ -1,18 +1,18 @@
-import React from "react";
-import Card from "./Card";
-import { MainState } from "./types";
+import React from 'react';
+import Card from './Card';
+import { MainState } from './types';
 
 export default class CardsContainer extends React.Component<MainState, MainState> {
-    constructor(props: MainState) {
-      super(props);
-      this.state = {
-        data: [...this.props.data]
-      }
-    }
+  constructor(props: MainState) {
+    super(props);
+    this.state = {
+      data: [...this.props.data],
+    };
+  }
 
-    render() {
-      return (
-        <div className="cards-container">
+  render() {
+    return (
+      <div className="cards-container">
         {this.props.data.length
           ? this.props.data.map((el, id) => (
               <Card
@@ -29,6 +29,6 @@ export default class CardsContainer extends React.Component<MainState, MainState
             ))
           : ''}
       </div>
-      );
-    }
+    );
   }
+}

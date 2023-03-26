@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Main.tsx</title>
+    <title>Code coverage report for src/pages/Main.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Main.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> Main.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.57% </span>
+                <span class="strong">85.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>40/61</span>
+                <span class='fraction'>47/55</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.57% </span>
+                <span class="strong">85.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>40/61</span>
+                <span class='fraction'>47/55</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -118,13 +118,17 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -148,7 +152,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -167,39 +170,34 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import Card from './Card';
-import Search from './Search';
-import { MyProps, CardProps, cardState } from './types';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import CardsContainer from '../components/CardsContainer';
+import React from 'react';
+import Search from '../components/Search';
+import { MyProps, MainState, FormData } from '../components/types';
 &nbsp;
-export default class Main extends React.Component&lt;MyProps, cardState&gt; {
+export default class Main extends React.Component&lt;MyProps, MainState&gt; {
   constructor(props: MyProps) {
     super(props);
-    this.state = { data: [] };
+    this.state = {
+      data: [
+        {
+          name: 'string',
+          surname: 'string',
+          birthDate: 'string',
+          isBirthDateVis: true,
+          region: 'string',
+          sex: 'string | null | undefined',
+          profilePic: 'string',
+          personalData: true,
+        },
+      ],
+    };
   }
-  cardsData: CardProps[] = [];
-  // async fetchData(){
-  //   const data = await fetch('https://64158b1d8b5d06e4a7b12b04.mockapi.io/cards/');
-  //   console.log(data)
-  // }
+  cardsData: FormData[] = [];
+&nbsp;
   componentDidMount(): void {
     fetch('https://64158b1d8b5d06e4a7b12b04.mockapi.io/cards/venicles', {
       method: 'GET',
@@ -209,7 +207,6 @@ export default class Main extends React.Component&lt;MyProps, cardState&gt; {
 <span class="cstat-no" title="statement not covered" >        if (res.ok) {</span>
 <span class="cstat-no" title="statement not covered" >          return res.json();</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        // handle error</span>
       })
       .then((data) =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log(data);</span>
@@ -226,22 +223,7 @@ export default class Main extends React.Component&lt;MyProps, cardState&gt; {
     return (
       &lt;main className="main"&gt;
         &lt;Search /&gt;
-        &lt;div className="cards-container"&gt;
-          {this.state.data.<span class="branch-0 cbranch-no" title="branch not covered" >length</span>
-<span class="cstat-no" title="statement not covered" >            ? this.state.data.map((el) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >                &lt;Card</span>
-<span class="cstat-no" title="statement not covered" >                  key={el.id}</span>
-<span class="cstat-no" title="statement not covered" >                  id={el.id}</span>
-<span class="cstat-no" title="statement not covered" >                  venicle={el.venicle}</span>
-<span class="cstat-no" title="statement not covered" >                  type={el.type}</span>
-<span class="cstat-no" title="statement not covered" >                  description={el.description}</span>
-<span class="cstat-no" title="statement not covered" >                  fuel={el.fuel}</span>
-<span class="cstat-no" title="statement not covered" >                  model={el.model}</span>
-<span class="cstat-no" title="statement not covered" >                  avatar={el.avatar}</span>
-<span class="cstat-no" title="statement not covered" >                /&gt;</span>
-<span class="cstat-no" title="statement not covered" >              ))</span>
-            : ''}
-        &lt;/div&gt;
+        &lt;CardsContainer data={this.state.data} /&gt;
       &lt;/main&gt;
     );
   }
@@ -253,7 +235,7 @@ export default class Main extends React.Component&lt;MyProps, cardState&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-19T21:32:15.814Z
+                at 2023-03-26T22:07:10.325Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

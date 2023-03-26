@@ -6,15 +6,20 @@ import { MyProps, MainState, FormData } from '../components/types';
 export default class Main extends React.Component<MyProps, MainState> {
   constructor(props: MyProps) {
     super(props);
-    this.state = { data: [{  name: 'string',
-      surname: 'string',
-      birthDate: 'string',
-      isBirthDateVis: true,
-      region: 'string',
-      sex: 'string | null | undefined',
-      profilePic: 'string',
-      personalData: true
-    }] };
+    this.state = {
+      data: [
+        {
+          name: 'string',
+          surname: 'string',
+          birthDate: 'string',
+          isBirthDateVis: true,
+          region: 'string',
+          sex: 'string | null | undefined',
+          profilePic: 'string',
+          personalData: true,
+        },
+      ],
+    };
   }
   cardsData: FormData[] = [];
 

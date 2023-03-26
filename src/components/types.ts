@@ -16,18 +16,22 @@ export type SearchState = { value: string };
 export interface FormSetState {
   createCard: (newCard: FormData) => void;
 }
-export interface FormData {
-  name: string;
-  surname: string;
-  birthDate: string;
-  isBirthDateVis: boolean;
-  region: string;
-  male?: HTMLInputElement | null;
-  female?: HTMLInputElement | null;
-  other?: HTMLInputElement | null;
+export interface FormDataStr {
+  name: string | null | undefined;
+  surname: string | null | undefined;
+  birthDate: string | null | undefined;
+  region: string | null | undefined;
+  profilePic: string | null | undefined;
+}
+export interface FormDataBoo {
+  isBirthDateVis: boolean | undefined;
+  male: boolean | undefined;
+  female: boolean | undefined;
+  other: boolean | undefined;
+  personalData: boolean | undefined;
+}
+export interface FormData extends FormDataStr, FormDataBoo {
   sex: string | null | undefined;
-  personalData: boolean;
-  profilePic: string;
   errors?: Errors;
 }
 export interface MainState {
@@ -36,11 +40,11 @@ export interface MainState {
 export interface FormState {
   data: FormData[];
   errors: Errors;
-  saved: boolean
+  saved: boolean;
 }
 export interface Errors {
   [key: string]: string;
 }
-export interface ModalState{
-  saved : boolean
+export interface ModalState {
+  saved: boolean;
 }

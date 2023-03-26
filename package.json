@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . src/ --ext .ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
-    "test": "vitest",
+    "test": "vitest --coverage",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {

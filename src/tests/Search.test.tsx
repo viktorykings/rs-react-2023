@@ -8,24 +8,25 @@ describe('<Search />', () => {
     const wrapper = render(<Search />);
     expect(wrapper).toBeTruthy();
   });
-  test('The input field and its props', () => {
+  test('The input field is exist', () => {
     render(<Search />);
     const input = document.querySelector('input') as HTMLInputElement | null;
-
     expect(input).toBeTruthy();
-
-    // is empty
+  });
+  test('The input field is empty', () => {
+    render(<Search />);
+    const input = document.querySelector('input') as HTMLInputElement | null;
     expect(input?.textContent).toBe('');
-
+  });
+  test('The input field is changing', () => {
+    render(<Search />);
+    const input = document.querySelector('input') as HTMLInputElement | null;
     if (input) {
-      // test the input text
       input.textContent = 'hello world';
       expect(input.textContent).toBe('hello world');
 
-      // test the type prop
       expect(input.type).toBe('search');
 
-      // test the value prop
       fireEvent.change(input, {
         target: {
           value: 'hello',
