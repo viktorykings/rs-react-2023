@@ -25,6 +25,9 @@ export default class CardsContainer extends React.Component<MainState, MainState
                 birthDate={el.birthDate}
                 profilePic={el.profilePic}
                 personalData={el.personalData}
+                male={undefined}
+                female={undefined}
+                other={undefined}
               />
             ))
           : ''}

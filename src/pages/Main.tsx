@@ -17,6 +17,9 @@ export default class Main extends React.Component<MyProps, MainState> {
           sex: 'string | null | undefined',
           profilePic: 'string',
           personalData: true,
+          male: false,
+          female: false,
+          other: false,
         },
       ],
     };
