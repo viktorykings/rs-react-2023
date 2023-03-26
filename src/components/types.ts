@@ -21,7 +21,7 @@ export interface FormDataStr {
   surname: string | null | undefined;
   birthDate: string | null | undefined;
   region: string | null | undefined;
-  profilePic: string | null | undefined;
+  profilePic: string | undefined;
 }
 export interface FormDataBoo {
   isBirthDateVis: boolean | undefined;

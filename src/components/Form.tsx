@@ -43,7 +43,7 @@ export default class Form extends React.Component<FormSetState, FormState> {
       this.surname.current!.value,
       this.birthDate.current!.value,
       this.region.current!.value,
-      this.profilePic.current!.value
+      URL.createObjectURL(this.profilePic.current!.files![0])
     );
     const boo = genBooleans(
       this.isBirthDateVis.current!.checked,
@@ -68,6 +68,8 @@ export default class Form extends React.Component<FormSetState, FormState> {
     };
     Object.assign(newCard, str, boo, { sex: sex });
     if (newCard) {
+      console.log(newCard);
+
       const resObj = validateFormData(newCard);
       if (resObj.isValid) {
         console.log('card created');
