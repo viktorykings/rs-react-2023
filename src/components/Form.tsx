@@ -43,7 +43,7 @@ export default class Form extends React.Component<FormSetState, FormState> {
       this.surname.current!.value,
       this.birthDate.current!.value,
       this.region.current!.value,
-      URL.createObjectURL(this.profilePic.current!.files![0])
+      this.profilePic.current!.value
     );
     const boo = genBooleans(
       this.isBirthDateVis.current!.checked,
