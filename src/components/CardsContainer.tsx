@@ -7,7 +7,7 @@ export const CardsContainer = ({ cards }: MainState) => {
   return (
     <div className="cards-container">
       {cards.length
-          ? cards.map((el, id) => (
+          && cards.map((el, id) => (
               <Card
                 key={id}
                 name={el.name}
@@ -23,7 +23,7 @@ export const CardsContainer = ({ cards }: MainState) => {
                 other={undefined}
               />
             ))
-          : ''}
+        }
       </div>  )
 }
 export default CardsContainer;
