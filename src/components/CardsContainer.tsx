@@ -4,6 +4,7 @@ import { MainState } from './types';
 
 
 export const CardsContainer = ({ cards }: MainState) => {
+  console.log(cards)
   return (
 <div className="cards-container">
   {cards.length
