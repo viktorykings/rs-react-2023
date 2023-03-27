@@ -35,7 +35,7 @@ export interface FormData extends FormDataStr, FormDataBoo {
   errors?: Errors;
 }
 export interface MainState {
-  data: FormData[];
+  cards: FormData[];
 }
 export interface FormState {
   data: FormData[];
