@@ -41,6 +41,7 @@ export default class Main extends React.Component<MyProps, MainState> {
         this.cardsData.push(data);
       })
       .catch((error) => {
+        console.log(error);
       });
   }
 

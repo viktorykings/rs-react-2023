@@ -68,7 +68,6 @@ export default class Form extends React.Component<FormSetState, FormState> {
     };
     Object.assign(newCard, str, boo, { sex: sex });
     if (newCard) {
-
       const resObj = validateFormData(newCard);
       if (resObj.isValid) {
         this.props.createCard(newCard);
