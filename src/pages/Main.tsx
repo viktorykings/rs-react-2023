@@ -37,13 +37,10 @@ export default class Main extends React.Component<MyProps, MainState> {
         }
       })
       .then((data) => {
-        console.log(data);
         this.setState({ data: data });
-        console.log(this.state.data, 'statw');
         this.cardsData.push(data);
       })
       .catch((error) => {
-        console.log(error);
       });
   }
 

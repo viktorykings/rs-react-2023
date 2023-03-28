@@ -21,13 +21,6 @@ export default class Header extends React.Component<MyProps, MyState> {
           >
             Main
           </Link>
-          {/* <Link
-            to="/about"
-            onClick={() => this.setState({ page: 'about' })}
-            className={this.state.page === 'about' ? 'active' : ''}
-          >
-            About Us
-          </Link> */}
           <Link
             to="form"
             onClick={() => this.setState({ page: 'form' })}

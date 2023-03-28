@@ -20,7 +20,6 @@ export function chooseSex(
 }
 export function validateEmpty(newCard: FormData, isValid: boolean, errors: Errors) {
   const { name, surname, birthDate, profilePic, region } = newCard;
-  console.log(profilePic);
   if (name!.trim().length < 4) {
     errors.name = 'Name must have length of 4 or higher!';
     isValid = false;
@@ -91,7 +90,6 @@ export function genStrings(...args: string[]): FormDataStr | null {
       birthDate: args[2],
       region: args[3],
       profilePic: args[4],
-      // sex: args[9],
     };
   } else return null;
 }
