@@ -1,3 +1,4 @@
+import { FieldErrors } from 'react-hook-form';
 import { Errors, FormData, FormDataBoo, FormDataStr } from './types';
 
 export function chooseSex(
@@ -17,6 +18,14 @@ export function chooseSex(
   if (other) {
     return 'other';
   }
+}
+export const errorsMsg = {
+  name: 'Name must have length of 4 or higher!',
+  emptyField: 'Field must not be empty!',
+  nonChecked: 'Value must be choosen',
+  file: 'Add file',
+  invalidDate: 'Enter correct date',
+  termsOFUse: 'You must accept the terms of use',
 }
 export function validateEmpty(newCard: FormData, isValid: boolean, errors: Errors) {
   const { name, surname, birthDate, profilePic, region } = newCard;
@@ -65,13 +74,14 @@ export function validateChoose(newCard: FormData, isValid: boolean, errors: Erro
   }
   return isValid;
 }
-export function validateDates(newCard: FormData, isValid: boolean, errors: Errors) {
+
+export function validateDates(newCard: FormData, isValid: boolean, errors: Errors | FieldErrors<FormData>) {
   const { birthDate } = newCard;
   if (!birthDate) return (isValid = false);
   const currDate = Date.now();
   const inputDate = Date.parse(birthDate);
   if (currDate < inputDate) {
-    errors.birthDate = 'Enter correct date';
+    // errors.birthDate = 'Enter correct date';
     isValid = false;
   }
   return isValid;

@@ -1,40 +1,45 @@
 import React, { FormEvent } from 'react';
 import SuccessModal from './SuccessModal';
 import { FormState, FormSetState, FormData } from './types';
-import { chooseSex, genStrings, genBooleans, validateFormData } from './helpers';
+import { chooseSex, genStrings, genBooleans, validateDates, errorsMsg, validateChoose } from './helpers';
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
   example: string,
   exampleRequired: string,
 };
-const Form = () => {
+const Form = ({ createCard }: FormSetState) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>();
-  const onSubmit: SubmitHandler<FormData> = data => console.log(data);
+  const onSubmit: SubmitHandler<FormData> = data =>{
+    console.log(data);
+    let isValid = true
+    const res = validateDates(data, isValid, errors)
+    console.log(res)
+    console.log(errors)
+  }
 
-  console.log(watch("name"))
   return (
       <div className="form-container">
         <form action="" className="form" onSubmit={handleSubmit(onSubmit)} {...register}>
           <label>
             Name
             <div>
-              <input type="text" {...register('name')} />
-              {errors.name && <p className="error">this f is req</p>}
+              <input type="text" {...register('name', { required: true, minLength: 4 })} />
+              {errors.name && <p className="error">{errorsMsg.name}</p>}
             </div>
           </label>
           <label>
             Surname
             <div>
-              <input type="text" {...register('surname')} />
-              {errors.surname && <p className="error">this f is req</p>}
+              <input type="text" {...register('surname', { required: true, minLength: 1 })} />
+              {errors.surname && <p className="error">{errorsMsg.emptyField}</p>}
             </div>
           </label>
           <label>
             Date of birth
             <div>
-              <input type="date" {...register('birthDate')} />
-              {errors.birthDate && <p className="error">this f is req</p>}
+              <input type="date" {...register('birthDate', { required: true, max: (new Date(Date.now()).toISOString()) })} />
+              {errors.birthDate && <p className="error">{errorsMsg.invalidDate}</p>}
             </div>
           </label>
           <label className="checkbox-input">
@@ -52,35 +57,35 @@ const Form = () => {
                 <option value="Australia">Australia</option>
                 <option value="Antarctica">Antarctica</option>
               </select>
-              {errors.region && <p className="error">this f is req</p>}
+              {errors.region && <p className="error">{errorsMsg.nonChecked}</p>}
             </div>
           </label>
           <label className="radio-input">
             <div className="radio-input-container">
               <label htmlFor="male">
-                Male <input type="radio" id="male" {...register('male')} />
+                Male <input type="radio" id="male" value="male" {...register('sex', {required: true})} />
               </label>
               <label htmlFor="female">
-                Female <input type="radio" id="female" {...register('female')} />
+                Female <input type="radio" id="female" value="female" {...register('sex', {required: true})} />
               </label>
               <label htmlFor="other">
-                Other <input type="radio" id="other" {...register('other')} />
+                Other <input type="radio" id="other" value='other' {...register('sex', {required: true})} />
               </label>
             </div>
-            {errors.sex && <p className="error">req</p>}
+            {errors.sex && <p className="error">{errorsMsg.nonChecked}</p>}
           </label>
           <label>
             Add profile picture
             <div>
-              <input type="file" id="profilePicture" {...register('profilePic')} />
-              {errors.profilePic && <p className="error">req</p>}
+              <input type="file" id="profilePicture" accept="image/*" {...register('profilePic', { required: true })} />
+              {errors.profilePic && <p className="error">{errorsMsg.file}</p>}
             </div>
           </label>
           <div className="terms">
             <label className="checkbox-input">
-              I consent to my personal data <input type="checkbox" {...register('personalData')} />
+              I consent to my personal data <input type="checkbox" {...register('personalData', { required: true })} />
             </label>
-            {errors.personalData && <p className="error">req</p>}
+            {errors.personalData && <p className="error">{errorsMsg.termsOFUse}</p>}
           </div>
           <button type="submit">Create</button>
         </form>
