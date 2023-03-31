@@ -6,7 +6,7 @@ export interface CardProps {
   description: string;
   fuel: string;
   model: string;
-  avatar: string;
+  avatar: string | File | Blob | MediaSource;
 }
 export type MyGroupType = {
   [key: string]: CardProps;
@@ -21,7 +21,8 @@ export interface FormDataStr {
   surname: string | null | undefined;
   birthDate: string | null | undefined;
   region: string | null | undefined;
-  profilePic: string | undefined;
+  // profilePic: Blob;
+  profilePic: FileList;
 }
 export interface FormDataBoo {
   isBirthDateVis: boolean | undefined;

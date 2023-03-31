@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useEffect } from 'react';
 import SuccessModal from './SuccessModal';
 import { FormState, FormSetState, FormData } from './types';
 import { chooseSex, genStrings, genBooleans, validateDates, errorsMsg, validateChoose } from './helpers';
@@ -9,15 +9,17 @@ type Inputs = {
   exampleRequired: string,
 };
 const Form = ({ createCard }: FormSetState) => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>();
+  const { register, handleSubmit, reset, formState, formState: { errors, isSubmitSuccessful  } } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = data =>{
-    console.log(data);
-    let isValid = true
-    const res = validateDates(data, isValid, errors)
-    console.log(res)
-    console.log(errors)
+    createCard(data);
+    console.log(data.profilePic)
+    // data.profilePic = URL.createObjectURL(data.profilePic)
   }
-
+  // useEffect(() => {
+  //   if (isSubmitSuccessful) {
+  //     reset();
+  //   }
+  // }, [formState, reset]);
   return (
       <div className="form-container">
         <form action="" className="form" onSubmit={handleSubmit(onSubmit)} {...register}>
