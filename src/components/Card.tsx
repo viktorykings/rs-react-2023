@@ -8,7 +8,6 @@ const Card = (props: FormData) => {
     file = props.profilePic[0]
       src = URL.createObjectURL(file)
   }
-  console.log(props.profilePic)
   return (
     <div className="card">
     <img src={src} alt="img" className="image" />

@@ -47,5 +47,5 @@ export interface Errors {
   [key: string]: string;
 }
 export interface ModalState {
-  saved: boolean;
+  saved: string;
 }
