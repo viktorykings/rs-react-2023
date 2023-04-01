@@ -2,8 +2,11 @@ import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import Card from '../components/Card';
+import profilePic from './mock';
 
 describe('<Card />', () => {
+ const profilePic = 'blob:http://127.0.0.1:5173/cd51b1e8-7364-4422-8f1b-584d13de87f4';
+
   test('Card mounts properly', () => {
     const wrapper = render(
       <Card
@@ -14,10 +17,7 @@ describe('<Card />', () => {
         region={''}
         sex={''}
         personalData={false}
-        profilePic={''}
-        male={false}
-        female={false}
-        other={false}
+        profilePic={profilePic}
       />
     );
     expect(wrapper).toBeTruthy();
@@ -32,10 +32,7 @@ describe('<Card />', () => {
         region={''}
         sex={''}
         personalData={false}
-        profilePic={''}
-        male={false}
-        female={false}
-        other={false}
+        profilePic={profilePic}
       />
     );
     const cardProp = screen.getByText(/test/i);
@@ -51,10 +48,7 @@ describe('<Card />', () => {
         region={''}
         sex={''}
         personalData={false}
-        profilePic={''}
-        male={false}
-        female={false}
-        other={false}
+        profilePic={profilePic}
       />
     );
     const cardProp = screen.getByAltText(/img/i);
@@ -70,10 +64,7 @@ describe('<Card />', () => {
         region={''}
         sex={''}
         personalData={false}
-        profilePic={''}
-        male={false}
-        female={false}
-        other={false}
+        profilePic={profilePic}
       />
     );
     const cardProp = screen.getByAltText(/img/i);

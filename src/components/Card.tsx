@@ -3,14 +3,14 @@ import { FormData } from './types';
 
 const Card = (props: FormData) => {
   let file: Blob | MediaSource;
-  let src = ''
-  if(props.profilePic.length > 0){
-    file = props.profilePic[0]
-      src = URL.createObjectURL(file)
-  }
+  // if(props.profilePic.length > 0){
+  //   file = props.profilePic[0]
+  //     src = URL.createObjectURL(file)
+  // }
+  console.log(props.profilePic)
   return (
     <div className="card">
-    <img src={src} alt="img" className="image" />
+    <img src={props.profilePic} alt="img" className="image" />
     <div className="info">
       <h5>{props.name}</h5>
       <p>{props.surname}</p>

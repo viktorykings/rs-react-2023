@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/CardsContainer.tsx</title>
+    <title>Code coverage report for tests/mock.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> CardsContainer.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">tests</a> mock.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.55% </span>
+                <span class="strong">87.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>28/29</span>
+                <span class='fraction'>27/31</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.55% </span>
+                <span class="strong">87.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>28/29</span>
+                <span class='fraction'>27/31</span>
             </div>
         
             
@@ -92,65 +92,68 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import Card from './Card';
-import { MainState } from './types';
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">interface MockFile {
+    name: string;
+    body: string;
+    mimeType: string;
+}
 &nbsp;
+const createFileFromMockFile = (file: MockFile): File =&gt; {
+    const blob = new Blob([file.body], { type: file.mimeType }) as any;
+    blob['lastModifiedDate'] = new Date();
+    blob['name'] = file.name;
+    return blob as File;
+};
 &nbsp;
-export const CardsContainer = ({ cards }: MainState) =&gt; {
-  return (
-    &lt;div className="cards-container"&gt;
-      {cards.length
-          &amp;&amp; cards.map((el, id) =&gt; (
-              &lt;Card
-                key={id}
-                name={el.name}
-                surname={el.surname}
-                isBirthDateVis={el.isBirthDateVis}
-                region={el.region}
-                sex={el.sex}
-                birthDate={el.birthDate}
-                profilePic={el.profilePic}
-                personalData={el.personalData}
-                male={undefined}
-                female={undefined}
-                other={undefined}
-              /&gt;
-            ))
-        }
-      &lt;/div&gt;  )
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >}</span></span>
-export default CardsContainer;
-&nbsp;</pre></td></tr></table></pre>
+const createMockFileList = (files: MockFile[]) =&gt; {
+    const fileList: FileList = {
+        length: files.length,
+<span class="fstat-no" title="function not covered" >        item(index: number): File {</span>
+<span class="cstat-no" title="statement not covered" >            return fileList[index];</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+        [Symbol.iterator]: <span class="fstat-no" title="function not covered" >function (): IterableIterator&lt;File&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Function not implemented.");</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+    };
+    files.forEach((file, index) =&gt; fileList[index] = createFileFromMockFile(file));
+&nbsp;
+    return fileList;
+};
+const fileList = createMockFileList([{body: 'test',
+mimeType: 'image/*',
+name: "TxAm1VzYFEg.jpg"}])
+export default fileList;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

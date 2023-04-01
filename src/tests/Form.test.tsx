@@ -2,26 +2,23 @@ import { describe, test, expect } from 'vitest';
 import { render } from '@testing-library/react';
 import React from 'react';
 import Form from '../components/Form';
-import { validateFormData } from '../components/helpers';
 import { FormData } from '../components/types';
 
 describe('<Form />', () => {
+  const profilePic = 'blob:http://127.0.0.1:5173/cd51b1e8-7364-4422-8f1b-584d13de87f4';
   const card = {
     name: 'f',
     surname: '',
     birthDate: '',
-    profilePic: '',
+    profilePic: profilePic,
     isBirthDateVis: false,
     region: '',
-    male: false,
-    female: false,
-    other: false,
     sex: '',
     personalData: false,
   };
 
   function createCard(card: FormData) {
-    const isValid = validateFormData(card);
+    const isValid = false;
     return isValid;
   }
   const wrapper = render(<Form createCard={() => createCard(card)} />);

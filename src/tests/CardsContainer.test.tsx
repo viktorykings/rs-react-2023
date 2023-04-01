@@ -2,10 +2,10 @@ import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import CardsContainer from '../components/CardsContainer';
-import FormPage from '../pages/FormPage';
 import { FormData } from '../components/types';
 
 describe('<CardsContainer />', () => {
+  const profilePic = 'blob:http://127.0.0.1:5173/cd51b1e8-7364-4422-8f1b-584d13de87f4';
     function create(): FormData{
         return { name: 'tst',
         surname: '',
@@ -14,10 +14,8 @@ describe('<CardsContainer />', () => {
         region: '',
         sex: 'm',
         personalData: false,
-        profilePic: '',
-        male: false,
-        female: false,
-        other: false}
+        profilePic: profilePic,
+      }
     }
     const cardsArr: FormData[] = []
 
@@ -30,6 +28,7 @@ describe('<CardsContainer />', () => {
     for(let i = 0; i < 3; i++){
         cardsArr.push(create())
     }
+    console.log(cardsArr[0].profilePic[0])
     render(<CardsContainer cards={cardsArr}/>)
     const cardsRen = document.getElementsByClassName('card')
     expect(cardsRen.length).toBe(3);

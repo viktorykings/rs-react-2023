@@ -1,17 +1,21 @@
-import React, { FormEvent, useEffect } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import SuccessModal from './SuccessModal';
 import { FormSetState, FormData } from './types';
-import { errorsMsg } from './helpers';
+import errorsMsg from './helpers';
 import { useForm, SubmitHandler } from "react-hook-form";
 
 const Form = ({ createCard }: FormSetState) => {
   const { register, handleSubmit, reset, formState, formState: { errors, isSubmitSuccessful  } } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = data =>{
     createCard(data);
+    data.profilePic = URL.createObjectURL(data.profilePicList![0])
   }
+  const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
+      setIsModalVisible(true)
+      setTimeout(() => setIsModalVisible(false), 2000)
     }
   }, [formState, reset]);
   return (
@@ -73,7 +77,7 @@ const Form = ({ createCard }: FormSetState) => {
           <label>
             Add profile picture
             <div>
-              <input type="file" id="profilePicture" accept="image/*" {...register('profilePic', { required: true })} />
+              <input type="file" id="profilePicture" accept="image/*" {...register('profilePicList', { required: true })} />
               {errors.profilePic && <p className="error">{errorsMsg.file}</p>}
             </div>
           </label>
@@ -85,7 +89,7 @@ const Form = ({ createCard }: FormSetState) => {
           </div>
           <button type="submit">Create</button>
         </form>
-        {/* <SuccessModal saved={...register(state.saved)} /> */}
+        <SuccessModal saved={isModalVisible} />
       </div>
 )
 }

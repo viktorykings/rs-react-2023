@@ -16,22 +16,16 @@ export type SearchState = { value: string };
 export interface FormSetState {
   createCard: (newCard: FormData) => void;
 }
-export interface FormDataStr {
+
+export interface FormData {
   name: string | null | undefined;
   surname: string | null | undefined;
   birthDate: string | null | undefined;
   region: string | null | undefined;
-  // profilePic: Blob;
-  profilePic: FileList;
-}
-export interface FormDataBoo {
+  profilePicList?: FileList;
+  profilePic: string;
   isBirthDateVis: boolean | undefined;
-  male: boolean | undefined;
-  female: boolean | undefined;
-  other: boolean | undefined;
   personalData: boolean | undefined;
-}
-export interface FormData extends FormDataStr, FormDataBoo {
   sex: string | null | undefined;
   errors?: Errors;
 }
@@ -47,5 +41,5 @@ export interface Errors {
   [key: string]: string;
 }
 export interface ModalState {
-  saved: string;
+  saved: boolean;
 }
