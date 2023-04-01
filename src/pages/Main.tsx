@@ -1,11 +1,10 @@
 import CardsContainer from '../components/CardsContainer';
 import React, { useEffect, useState } from 'react';
 import Search from '../components/Search';
-import { MyProps, MainState, FormData } from '../components/types';
+import { FormData } from '../components/types';
 
 const Main = () => {
-  const [cards, setCards] = useState<FormData[]>([])
-  console.log(cards, '1')
+  const [cards, setCards] = useState<FormData[]>([]);
   useEffect(() => {
     fetch('https://64158b1d8b5d06e4a7b12b04.mockapi.io/cards/venicles', {
       method: 'GET',
@@ -17,20 +16,17 @@ const Main = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         setCards(data);
-        console.log(cards, 'statw');
       })
       .catch((error) => {
         console.log(error);
       });
-      console.log(cards, '2')
-  }, [])
+  }, [cards]);
   return (
-      <main className="main">
-        <Search />
-        <CardsContainer cards={cards} />
-      </main>
-  )
-}
+    <main className="main">
+      <Search />
+      <CardsContainer cards={cards} />
+    </main>
+  );
+};
 export default Main;

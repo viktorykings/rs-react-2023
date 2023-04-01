@@ -13,7 +13,7 @@ const FormPage = () => {
       <Form createCard={createCard} />
       <CardsContainer cards={cards} />
     </div>
-  )
-}
+  );
+};
 
 export default FormPage;

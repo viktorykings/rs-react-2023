@@ -18,7 +18,10 @@ describe('<Form />', () => {
   };
 
   function createCard(card: FormData) {
-    const isValid = false;
+    let isValid = true;
+    if (!card) {
+      isValid = false;
+    }
     return isValid;
   }
   const wrapper = render(<Form createCard={() => createCard(card)} />);

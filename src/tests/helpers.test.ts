@@ -7,6 +7,6 @@ describe('Errors msg obj', () => {
     expect(errorsMsg.name).toBeTruthy();
   });
   test('mock exist', () => {
-    expect(fileList.length).toBe(1)
-  })
+    expect(fileList.length).toBe(1);
+  });
 });
