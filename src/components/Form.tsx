@@ -13,8 +13,8 @@ const Form = ({ createCard }: FormSetState) => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    createCard(data);
     data.profilePic = URL.createObjectURL(data.profilePicList![0]);
+    createCard(data);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
@@ -26,12 +26,19 @@ const Form = ({ createCard }: FormSetState) => {
   }, [formState, reset, isSubmitSuccessful]);
   return (
     <div className="form-container">
-      <form action="" className="form" onSubmit={handleSubmit(onSubmit)} {...register}>
-        <label>
+      <form
+        action=""
+        className="form"
+        data-testid="form"
+        onSubmit={handleSubmit(onSubmit)}
+        {...register}
+      >
+        <label htmlFor="name">
           Name
           <div>
             <input
               type="text"
+              id="name"
               {...register('name', {
                 required: true,
                 minLength: 4,
@@ -41,10 +48,14 @@ const Form = ({ createCard }: FormSetState) => {
             {errors.name && <p className="error">{errorsMsg.name}</p>}
           </div>
         </label>
-        <label>
+        <label htmlFor="surname">
           Surname
           <div>
-            <input type="text" {...register('surname', { required: true, minLength: 1 })} />
+            <input
+              type="text"
+              id="surname"
+              {...register('surname', { required: true, minLength: 1 })}
+            />
             {errors.surname && <p className="error">{errorsMsg.emptyField}</p>}
           </div>
         </label>
@@ -106,7 +117,7 @@ const Form = ({ createCard }: FormSetState) => {
           </div>
           {errors.sex && <p className="error">{errorsMsg.nonChecked}</p>}
         </label>
-        <label>
+        <label htmlFor="profilePicture">
           Add profile picture
           <div>
             <input
@@ -119,7 +130,7 @@ const Form = ({ createCard }: FormSetState) => {
           </div>
         </label>
         <div className="terms">
-          <label className="checkbox-input">
+          <label className="checkbox-input" id="ckeckbox">
             I consent to my personal data{' '}
             <input type="checkbox" {...register('personalData', { required: true })} />
           </label>

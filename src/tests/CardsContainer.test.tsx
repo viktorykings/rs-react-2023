@@ -19,7 +19,12 @@ describe('<CardsContainer />', () => {
     };
   }
   const cardsArr: FormData[] = [];
-
+  test('cardsContainer mounts', () => {
+    const wrapper = render(<CardsContainer cards={cardsArr} />);
+    const div = document.querySelector('.cards-container');
+    expect(wrapper).toBeTruthy();
+    expect(div).toBeTruthy();
+  });
   test('No cards if cards array empty', () => {
     render(<CardsContainer cards={cardsArr} />);
     const cardsRen = document.getElementsByClassName('card');
@@ -29,7 +34,6 @@ describe('<CardsContainer />', () => {
     for (let i = 0; i < 3; i++) {
       cardsArr.push(create());
     }
-    console.log(cardsArr[0].profilePic[0]);
     render(<CardsContainer cards={cardsArr} />);
     const cardsRen = document.getElementsByClassName('card');
     expect(cardsRen.length).toBe(3);

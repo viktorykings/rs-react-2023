@@ -22,7 +22,7 @@ export interface FormData {
   surname: string | null | undefined;
   birthDate: string | null | undefined;
   region: string | null | undefined;
-  profilePicList?: FileList;
+  profilePicList?: FileList | Blob[];
   profilePic: string;
   isBirthDateVis: boolean | undefined;
   personalData: boolean | undefined;

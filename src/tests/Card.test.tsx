@@ -69,4 +69,34 @@ describe('<Card />', () => {
     const cardProp = screen.getByAltText(/img/i);
     expect(cardProp).toBeTruthy();
   });
+  test('B-day hidden if isBirthDateVis === false', () => {
+    render(
+      <Card
+        name={'test'}
+        surname={''}
+        birthDate={'01'}
+        isBirthDateVis={false}
+        region={''}
+        sex={''}
+        personalData={false}
+        profilePic={profilePic}
+      />
+    );
+    expect(screen.queryByText(/01/i)).toBeFalsy();
+  });
+  test('B-day showed if isBirthDateVis === true', () => {
+    render(
+      <Card
+        name={'test'}
+        surname={''}
+        birthDate={'01'}
+        isBirthDateVis={true}
+        region={''}
+        sex={''}
+        personalData={false}
+        profilePic={profilePic}
+      />
+    );
+    expect(screen.getByText(/01/i)).toBeTruthy();
+  });
 });
