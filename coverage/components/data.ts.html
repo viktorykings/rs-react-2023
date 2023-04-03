@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/pages/Main.tsx</title>
+    <title>Code coverage report for components/data.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> Main.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> data.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/56</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/56</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -119,7 +119,14 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -153,16 +160,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -175,62 +172,86 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import CardsContainer from '../components/CardsContainer';
-import React from 'react';
-import Search from '../components/Search';
-import { MyProps, MainState, FormData } from '../components/types';
-&nbsp;
-export default class Main extends React.Component&lt;MyProps, MainState&gt; {
-  constructor(props: MyProps) {
-    super(props);
-    this.state = {
-      data: [
-        {
-          name: 'string',
-          surname: 'string',
-          birthDate: 'string',
-          isBirthDateVis: true,
-          region: 'string',
-          sex: 'string | null | undefined',
-          profilePic: 'string',
-          personalData: true,
-          male: false,
-          female: false,
-          other: false,
-        },
-      ],
-    };
-  }
-  cardsData: FormData[] = [];
-&nbsp;
-  componentDidMount(): void {
-    fetch('https://64158b1d8b5d06e4a7b12b04.mockapi.io/cards/venicles', {
-      method: 'GET',
-      headers: { 'content-type': 'application/json' },
-    })
-      .then((res) =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (res.ok) {</span>
-<span class="cstat-no" title="statement not covered" >          return res.json();</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-      })
-      .then((data) =&gt; {
-<span class="cstat-no" title="statement not covered" >        this.setState({ data: data });</span>
-<span class="cstat-no" title="statement not covered" >        this.cardsData.push(data);</span>
-      })
-      .catch((error) =&gt; {
-<span class="cstat-no" title="statement not covered" >        console.log(error);</span>
-      });
-  }
-&nbsp;
-  render() {
-    return (
-      &lt;main className="main"&gt;
-        &lt;Search /&gt;
-        &lt;CardsContainer data={this.state.data} /&gt;
-      &lt;/main&gt;
-    );
-  }
-}
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const data = [
+  {
+    name: 'Stephon',
+    surname: 'Graham',
+    birthDate: '1947-05-01T11:53:43.252Z',
+    region: 'Western Sahara',
+    profilePic:
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/877.jpg',
+    sex: 'male',
+    personalData: true,
+    isBirthDateVis: false,
+    id: '1',
+  },
+  {
+    name: 'Darrin',
+    surname: 'Jenkins',
+    birthDate: '1987-07-13T17:47:36.131Z',
+    region: 'Croatia',
+    profilePic:
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/534.jpg',
+    sex: 'female',
+    personalData: false,
+    isBirthDateVis: true,
+    id: '2',
+  },
+  {
+    name: 'Molly',
+    surname: 'Jerde',
+    birthDate: '2004-01-07T18:29:52.833Z',
+    region: 'Andorra',
+    profilePic:
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/74.jpg',
+    sex: 'female',
+    personalData: false,
+    isBirthDateVis: true,
+    id: '3',
+  },
+  {
+    name: 'Abbigail',
+    surname: 'Mante',
+    birthDate: '1972-06-03T02:51:31.826Z',
+    region: 'Maldives',
+    profilePic:
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/912.jpg',
+    sex: 'female',
+    personalData: true,
+    isBirthDateVis: true,
+    id: '4',
+  },
+  {
+    name: 'Madelynn',
+    surname: 'Dicki',
+    birthDate: '1969-01-20T06:17:13.043Z',
+    region: 'Pakistan',
+    profilePic:
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/71.jpg',
+    sex: 'male',
+    personalData: true,
+    isBirthDateVis: true,
+    id: '5',
+  },
+];
+export default data;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -238,16 +259,16 @@ export default class Main extends React.Component&lt;MyProps, MainState&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-28T21:03:55.111Z
+                at 2023-04-03T10:56:02.195Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     
