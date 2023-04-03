@@ -1,35 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { MyProps, MyState } from './types';
+import { NavLink } from 'react-router-dom';
 
-export default class Header extends React.Component<MyProps, MyState> {
-  constructor(props: MyProps) {
-    super(props);
-    this.state = {
-      page: 'main',
-    };
-  }
+const Header = () => {
+  const isActive = ({ isActive, isPending }: { isActive: boolean; isPending: boolean }) => {
+    return isPending ? 'pending' : isActive ? 'active' : '';
+  };
+  return (
+    <header className="header">
+      <nav className="nav">
+        <NavLink to="/" className={isActive} end>
+          Main
+        </NavLink>
+        <NavLink to="/about" className={isActive}>
+          About Us
+        </NavLink>
+        <NavLink to="form" className={isActive}>
+          Create card
+        </NavLink>
+      </nav>
+    </header>
+  );
+};
 
-  render() {
-    return (
-      <header className="header">
-        <nav className="nav">
-          <Link
-            to="/"
-            onClick={() => this.setState({ page: 'main' })}
-            className={this.state.page === 'main' ? 'active' : ''}
-          >
-            Main
-          </Link>
-          <Link
-            to="form"
-            onClick={() => this.setState({ page: 'form' })}
-            className={this.state.page === 'form' ? 'active' : ''}
-          >
-            Create card
-          </Link>
-        </nav>
-      </header>
-    );
-  }
-}
+export default Header;

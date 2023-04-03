@@ -6,7 +6,7 @@ export interface CardProps {
   description: string;
   fuel: string;
   model: string;
-  avatar: string;
+  avatar: string | File | Blob | MediaSource;
 }
 export type MyGroupType = {
   [key: string]: CardProps;
@@ -16,26 +16,21 @@ export type SearchState = { value: string };
 export interface FormSetState {
   createCard: (newCard: FormData) => void;
 }
-export interface FormDataStr {
+
+export interface FormData {
   name: string | null | undefined;
   surname: string | null | undefined;
   birthDate: string | null | undefined;
   region: string | null | undefined;
-  profilePic: string | undefined;
-}
-export interface FormDataBoo {
+  profilePicList?: FileList | Blob[];
+  profilePic: string;
   isBirthDateVis: boolean | undefined;
-  male: boolean | undefined;
-  female: boolean | undefined;
-  other: boolean | undefined;
   personalData: boolean | undefined;
-}
-export interface FormData extends FormDataStr, FormDataBoo {
   sex: string | null | undefined;
   errors?: Errors;
 }
 export interface MainState {
-  data: FormData[];
+  cards: FormData[];
 }
 export interface FormState {
   data: FormData[];

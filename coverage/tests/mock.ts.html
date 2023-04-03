@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/CardsContainer.tsx</title>
+    <title>Code coverage report for tests/mock.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> CardsContainer.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">tests</a> mock.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>35/41</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>35/41</span>
             </div>
         
             
@@ -100,26 +100,11 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -136,44 +121,71 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import Card from './Card';
-import { MainState } from './types';
-&nbsp;
-export default class CardsContainer extends React.Component&lt;MainState, MainState&gt; {
-  constructor(props: MainState) {
-    super(props);
-    this.state = {
-      data: [...this.props.data],
-    };
-  }
-&nbsp;
-  render() {
-    return (
-      &lt;div className="cards-container"&gt;
-        {this.props.data.length
-          ? this.props.data.map((el, id) =&gt; (
-              &lt;Card
-                key={id}
-                name={el.name}
-                surname={el.surname}
-                isBirthDateVis={el.isBirthDateVis}
-                region={el.region}
-                sex={el.sex}
-                birthDate={el.birthDate}
-                profilePic={el.profilePic}
-                personalData={el.personalData}
-                male={undefined}
-                female={undefined}
-                other={undefined}
-              /&gt;
-            ))
-          : ''}
-      &lt;/div&gt;
-    );
-  }
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">interface MockFile {
+  name: string;
+  body: string;
+  mimeType: string;
 }
+&nbsp;
+interface iBlob extends Blob, File {
+  name: string;
+  lastModifiedDate: Date;
+  lastModified: number;
+  webkitRelativePathts: string;
+}
+&nbsp;
+const createFileFromMockFile = (file: MockFile): File =&gt; {
+  const blob: Partial&lt;iBlob&gt; = new Blob([file.body], { type: file.mimeType });
+  blob.lastModifiedDate = new Date();
+  blob.name = file.name;
+  blob.lastModified = Date.now();
+  return blob as File;
+};
+&nbsp;
+const createMockFileList = (files: MockFile[]) =&gt; {
+  const fileList: FileList = {
+    length: files.length,
+<span class="fstat-no" title="function not covered" >    item(index: number): File {</span>
+<span class="cstat-no" title="statement not covered" >      return fileList[index];</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+    [Symbol.iterator]: <span class="fstat-no" title="function not covered" >function* (): IterableIterator&lt;File&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      for (const file of files) {</span>
+<span class="cstat-no" title="statement not covered" >        yield file as unknown as File;</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+  };
+  files.forEach((file, index) =&gt; (fileList[index] = createFileFromMockFile(file)));
+&nbsp;
+  return fileList;
+};
+const fileList = createMockFileList([
+  { body: 'test', mimeType: 'image/*', name: 'TxAm1VzYFEg.jpg' },
+]);
+export default fileList;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -181,16 +193,16 @@ export default class CardsContainer extends React.Component&lt;MainState, MainSt
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-28T21:03:55.111Z
+                at 2023-04-03T10:56:02.195Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     
