@@ -7,7 +7,7 @@ const Search = () => {
     return () => {
       localStorage.setItem('search', searchVal);
     };
-  });
+  }, []);
   return (
     <div className="search">
       <label htmlFor="search">
