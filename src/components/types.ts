@@ -29,8 +29,17 @@ export interface FormData {
   image:	string;
   errors?: Errors;
 }
+export interface CardPrewiew{
+  id: number;
+  name: string;
+  image: string;
+}
+export interface SingleCard{
+  card: FormData
+}
 export interface MainState {
   cards: FormData[];
+  fetchSingleCard: (e: React.MouseEvent<HTMLElement>) => void
 }
 export interface FormState {
   data: FormData[];

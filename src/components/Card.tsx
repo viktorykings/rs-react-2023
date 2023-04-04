@@ -1,18 +1,12 @@
 import React from 'react';
-import { FormData } from './types';
+import { CardPrewiew } from './types';
 
-const Card = (props: FormData) => {
+const Card = (props: CardPrewiew) => {
   return (
-    <div className="card">
+    <div className="card" id={(props.id).toString()}>
       <img src={props.image} alt="img" className="image" />
       <div className="info">
         <h5>{props.name}</h5>
-        <p>{props.status}</p>
-        <p>{props.species}</p>
-        <p>{props.type}</p>
-        <p>{props.location.name}</p>
-        <p>{props.origin.name}</p>
-        <p>{props.gender}</p>
       </div>
     </div>
   );
