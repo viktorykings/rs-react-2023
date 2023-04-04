@@ -18,15 +18,15 @@ export interface FormSetState {
 }
 
 export interface FormData {
-  name: string | null | undefined;
-  surname: string | null | undefined;
-  birthDate: string | null | undefined;
-  region: string | null | undefined;
-  profilePicList?: FileList | Blob[];
-  profilePic: string;
-  isBirthDateVis: boolean | undefined;
-  personalData: boolean | undefined;
-  sex: string | null | undefined;
+  id:	number;
+  name:	string;
+  status:	string;
+  species:	string;
+  type:	string;
+  gender:	string | null | undefined;
+  origin:	{name: string};
+  location:	{name: string};
+  image:	string;
   errors?: Errors;
 }
 export interface MainState {

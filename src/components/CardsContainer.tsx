@@ -8,15 +8,16 @@ export const CardsContainer = ({ cards }: MainState) => {
       {cards.length &&
         cards.map((el, id) => (
           <Card
-            key={id}
+            key={el.id}
+            id={el.id}
             name={el.name}
-            surname={el.surname}
-            isBirthDateVis={el.isBirthDateVis}
-            region={el.region}
-            sex={el.sex}
-            birthDate={el.birthDate}
-            profilePic={el.profilePic}
-            personalData={el.personalData}
+            status={el.status}
+            species={el.species}
+            type={el.type}
+            location={el.location}
+            origin={el.origin}
+            gender={el.gender}
+            image={el.image}
           />
         ))}
     </div>

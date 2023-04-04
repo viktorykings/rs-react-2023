@@ -4,14 +4,15 @@ import { FormData } from './types';
 const Card = (props: FormData) => {
   return (
     <div className="card">
-      <img src={props.profilePic} alt="img" className="image" />
+      <img src={props.image} alt="img" className="image" />
       <div className="info">
         <h5>{props.name}</h5>
-        <p>{props.surname}</p>
-        <p>{props.isBirthDateVis && props.birthDate}</p>
-        <p>{props.region}</p>
-        <p>{props.sex}</p>
-        <p>{props.isBirthDateVis}</p>
+        <p>{props.status}</p>
+        <p>{props.species}</p>
+        <p>{props.type}</p>
+        <p>{props.location.name}</p>
+        <p>{props.origin.name}</p>
+        <p>{props.gender}</p>
       </div>
     </div>
   );
