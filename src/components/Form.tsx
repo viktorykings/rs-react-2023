@@ -27,7 +27,6 @@ const Form = ({ createCard }: FormSetState) => {
         className="form"
         data-testid="form"
         onSubmit={handleSubmit(onSubmit)}
-        {...register}
       >
         <label htmlFor="name">
           Name

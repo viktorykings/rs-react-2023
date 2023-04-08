@@ -1,5 +1,5 @@
-import { describe, test, expect } from 'vitest';
-import { render, fireEvent } from '@testing-library/react';
+import { describe, test, expect, vi } from 'vitest';
+import { render, fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 import Search from '../components/Search';
 
@@ -36,4 +36,10 @@ describe('<Search />', () => {
       expect(input.value).toBe('hello');
     }
   });
+  test('calls onClick prop when clicked', () => {
+    const handleSearch = vi.fn(() => 0)
+    render(<Search handleSearch={handleSearch} />)
+    fireEvent.keyDown(screen.getByRole('searchbox'), {key: 'Enter', code: 'Enter', charCode: 13})
+    expect(handleSearch).toHaveBeenCalled()
+  })
 });

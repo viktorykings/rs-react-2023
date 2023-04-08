@@ -5,7 +5,6 @@ import CardsContainer from '../components/CardsContainer';
 import { FormData } from '../components/types';
 
 describe('<CardsContainer />', () => {
-  const profilePic = 'blob:http://127.0.0.1:5173/cd51b1e8-7364-4422-8f1b-584d13de87f4';
   function create(): FormData {
     return {
       id:1,

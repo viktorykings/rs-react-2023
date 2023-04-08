@@ -2,10 +2,10 @@ import React from 'react';
 import Card from './Card';
 import { MainState } from './types';
 
-export const CardsContainer = ({ cards, fetchSingleCard }: MainState) => {
+const CardsContainer = ({ cards, fetchSingleCard }: MainState) => {
   return (
     <div className="cards-container" onClick={fetchSingleCard}>
-      {cards.length &&
+      {cards &&
         cards.map((el) => (
           <Card
             key={el.id}

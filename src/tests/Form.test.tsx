@@ -1,9 +1,8 @@
-import { describe, test, expect } from 'vitest';
-import { render } from '@testing-library/react';
+import { describe, test, expect, vi } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import Form from '../components/Form';
 import { FormData } from '../components/types';
-import fileList from './mock';
 
 describe('<Form />', () => {
   const profilePic = 'blob:http://127.0.0.1:5173/cd51b1e8-7364-4422-8f1b-584d13de87f4';
