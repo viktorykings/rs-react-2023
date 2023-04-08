@@ -28,6 +28,8 @@ export interface FormData {
   location:	{name: string};
   image:	string;
   errors?: Errors;
+  personalData?: boolean;
+  picList?: Blob[];
 }
 export interface CardPrewiew{
   id: number;
@@ -35,11 +37,12 @@ export interface CardPrewiew{
   image: string;
 }
 export interface SingleCard{
-  card: FormData
+  card: FormData;
+  handleCloseSingleCard: (e: React.MouseEvent<HTMLElement>) => void;
 }
 export interface MainState {
   cards: FormData[];
-  fetchSingleCard: (e: React.MouseEvent<HTMLElement>) => void
+  fetchSingleCard?: (e: React.MouseEvent<HTMLElement>) => void
 }
 export interface FormState {
   data: FormData[];
@@ -51,4 +54,7 @@ export interface Errors {
 }
 export interface ModalState {
   saved: boolean;
+}
+export interface QueryValues{
+  name: string
 }

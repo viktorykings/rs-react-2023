@@ -9,21 +9,17 @@ const Form = ({ createCard }: FormSetState) => {
     register,
     handleSubmit,
     reset,
-    formState,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    data.profilePic = URL.createObjectURL(data.profilePicList![0]);
-    createCard(data);
+    createCard({...data, image: URL.createObjectURL(data.picList![0]), id: Date.now()});
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
-    if (isSubmitSuccessful) {
       reset();
       setIsModalVisible(true);
       setTimeout(() => setIsModalVisible(false), 2000);
-    }
-  }, [formState, reset, isSubmitSuccessful]);
+  }, [reset]);
   return (
     <div className="form-container">
       <form
@@ -54,9 +50,9 @@ const Form = ({ createCard }: FormSetState) => {
             <input
               type="text"
               id="surname"
-              {...register('surname', { required: true, minLength: 1 })}
+              {...register('status', { required: true, minLength: 1 })}
             />
-            {errors.surname && <p className="error">{errorsMsg.emptyField}</p>}
+            {errors.status && <p className="error">{errorsMsg.emptyField}</p>}
           </div>
         </label>
         <label>
@@ -64,21 +60,21 @@ const Form = ({ createCard }: FormSetState) => {
           <div>
             <input
               type="date"
-              {...register('birthDate', {
+              {...register('species', {
                 required: true,
                 max: new Date(Date.now()).toISOString(),
               })}
             />
-            {errors.birthDate && <p className="error">{errorsMsg.invalidDate}</p>}
+            {errors.species && <p className="error">{errorsMsg.invalidDate}</p>}
           </div>
         </label>
         <label className="checkbox-input">
-          Show birth date in profile <input type="checkbox" {...register('isBirthDateVis')} />
+          Show birth date in profile <input type="checkbox" {...register('type')} />
         </label>
         <label className="select-input">
           Region
           <div>
-            <select {...register('region')}>
+            <select {...register('type')}>
               <option value="Europe">Europe</option>
               <option value="North America">North America</option>
               <option value="South America">South America</option>
@@ -87,14 +83,14 @@ const Form = ({ createCard }: FormSetState) => {
               <option value="Australia">Australia</option>
               <option value="Antarctica">Antarctica</option>
             </select>
-            {errors.region && <p className="error">{errorsMsg.nonChecked}</p>}
+            {errors.type && <p className="error">{errorsMsg.nonChecked}</p>}
           </div>
         </label>
         <label className="radio-input">
           <div className="radio-input-container">
             <label htmlFor="male">
               Male{' '}
-              <input type="radio" id="male" value="male" {...register('sex', { required: true })} />
+              <input type="radio" id="male" value="male" {...register('gender', { required: true })} />
             </label>
             <label htmlFor="female">
               Female{' '}
@@ -102,7 +98,7 @@ const Form = ({ createCard }: FormSetState) => {
                 type="radio"
                 id="female"
                 value="female"
-                {...register('sex', { required: true })}
+                {...register('gender', { required: true })}
               />
             </label>
             <label htmlFor="other">
@@ -111,11 +107,11 @@ const Form = ({ createCard }: FormSetState) => {
                 type="radio"
                 id="other"
                 value="other"
-                {...register('sex', { required: true })}
+                {...register('gender', { required: true })}
               />
             </label>
           </div>
-          {errors.sex && <p className="error">{errorsMsg.nonChecked}</p>}
+          {errors.gender && <p className="error">{errorsMsg.nonChecked}</p>}
         </label>
         <label htmlFor="profilePicture">
           Add profile picture
@@ -124,9 +120,9 @@ const Form = ({ createCard }: FormSetState) => {
               type="file"
               id="profilePicture"
               accept="image/*"
-              {...register('profilePicList', { required: true })}
+              {...register('picList', { required: true })}
             />
-            {errors.profilePic && <p className="error">{errorsMsg.file}</p>}
+            {errors.image && <p className="error">{errorsMsg.file}</p>}
           </div>
         </label>
         <div className="terms">

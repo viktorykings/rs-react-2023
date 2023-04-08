@@ -8,4 +8,7 @@ describe('<FormPage />', () => {
     const wrapper = render(<FormPage />);
     expect(wrapper).toBeTruthy();
   });
+  test('create card', () => {
+    
+  })
 });

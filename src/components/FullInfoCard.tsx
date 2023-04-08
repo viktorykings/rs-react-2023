@@ -1,9 +1,9 @@
 import React from 'react';
 import { SingleCard } from './types';
 
-const FullInfoCard = ({ card }: SingleCard) => {
+const FullInfoCard = ({ card, handleCloseSingleCard }: SingleCard) => {
   return (
-    <div className='backdrop'>
+    <div className='backdrop' onClick={handleCloseSingleCard}>
         <div className="card-full">
         <img src={card.image} alt="img" className="image" />
         <div className="info">
@@ -15,6 +15,7 @@ const FullInfoCard = ({ card }: SingleCard) => {
             <p>{card.origin.name}</p>
             <p>{card.gender}</p>
         </div>
+        <div className="close-btn">x</div>
         </div>
     </div>
   );
