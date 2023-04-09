@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Icon from '../assets/search-icon.png';
 type SearchVal = {
-  handleSearch :(name: string) => void
-}
+  handleSearch: (name: string) => void;
+};
 
 const Search = ({ handleSearch }: SearchVal) => {
   const [searchVal, setSearchVal] = useState(localStorage.getItem('search') ?? '');
@@ -13,9 +13,9 @@ const Search = ({ handleSearch }: SearchVal) => {
   }, [searchVal]);
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
-      handleSearch(searchVal)
+      handleSearch(searchVal);
     }
-  }
+  };
   return (
     <div className="search">
       <label htmlFor="search">

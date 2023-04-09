@@ -4,11 +4,11 @@ import React from 'react';
 import Search from '../components/Search';
 
 describe('<Search />', () => {
-  const handleSearch = () => void
-  test('Search mounts properly', () => {
-    const wrapper = render(<Search handleSearch={handleSearch} />);
-    expect(wrapper).toBeTruthy();
-  });
+  const handleSearch = () =>
+    void test('Search mounts properly', () => {
+      const wrapper = render(<Search handleSearch={handleSearch} />);
+      expect(wrapper).toBeTruthy();
+    });
   test('The input field is exist', () => {
     render(<Search handleSearch={handleSearch} />);
     const input = document.querySelector('input') as HTMLInputElement | null;
@@ -37,9 +37,9 @@ describe('<Search />', () => {
     }
   });
   test('calls onClick prop when clicked', () => {
-    const handleSearch = vi.fn(() => 0)
-    render(<Search handleSearch={handleSearch} />)
-    fireEvent.keyDown(screen.getByRole('searchbox'), {key: 'Enter', code: 'Enter', charCode: 13})
-    expect(handleSearch).toHaveBeenCalled()
-  })
+    const handleSearch = vi.fn(() => 0);
+    render(<Search handleSearch={handleSearch} />);
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Enter', code: 'Enter', charCode: 13 });
+    expect(handleSearch).toHaveBeenCalled();
+  });
 });

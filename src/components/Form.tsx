@@ -9,25 +9,22 @@ const Form = ({ createCard }: FormSetState) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
   } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    createCard({...data, image: URL.createObjectURL(data.picList![0]), id: Date.now()});
+    createCard({ ...data, image: URL.createObjectURL(data.picList![0]), id: Date.now() });
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
+    if (isSubmitSuccessful) {
       reset();
       setIsModalVisible(true);
       setTimeout(() => setIsModalVisible(false), 2000);
-  }, [reset]);
+    }
+  }, [reset, isSubmitSuccessful]);
   return (
     <div className="form-container">
-      <form
-        action=""
-        className="form"
-        data-testid="form"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form action="" className="form" data-testid="form" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="name">
           Name
           <div>
@@ -89,7 +86,12 @@ const Form = ({ createCard }: FormSetState) => {
           <div className="radio-input-container">
             <label htmlFor="male">
               Male{' '}
-              <input type="radio" id="male" value="male" {...register('gender', { required: true })} />
+              <input
+                type="radio"
+                id="male"
+                value="male"
+                {...register('gender', { required: true })}
+              />
             </label>
             <label htmlFor="female">
               Female{' '}

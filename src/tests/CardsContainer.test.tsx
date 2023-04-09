@@ -5,20 +5,20 @@ import CardsContainer from '../components/CardsContainer';
 import { FormData } from '../components/types';
 
 describe('<CardsContainer />', () => {
-  function create(): FormData {
+  function create(i: number): FormData {
     return {
-      id:1,
-      name:'test',
-      status:'string',
-      species:'',
-      type:'string',
-      gender:null,
-      origin:{name:''},
-      location:{name:''},
-      image:'',
+      id: i,
+      name: 'test',
+      status: 'string',
+      species: '',
+      type: 'string',
+      gender: null,
+      origin: { name: '' },
+      location: { name: '' },
+      image: '',
     };
   }
-  const fetchSingleCard  =  (e: React.MouseEvent<HTMLElement>) => e;
+  const fetchSingleCard = (e: React.MouseEvent<HTMLElement>) => e;
   const cardsArr: FormData[] = [];
   test('cardsContainer mounts', () => {
     const wrapper = render(<CardsContainer cards={cardsArr} fetchSingleCard={fetchSingleCard} />);
@@ -33,7 +33,7 @@ describe('<CardsContainer />', () => {
   });
   test('Amount of cards is equal to cards array length', () => {
     for (let i = 0; i < 3; i++) {
-      cardsArr.push(create());
+      cardsArr.push(create(i));
     }
     render(<CardsContainer cards={cardsArr} fetchSingleCard={fetchSingleCard} />);
     const cardsRen = document.getElementsByClassName('card');
