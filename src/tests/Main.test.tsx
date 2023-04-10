@@ -48,7 +48,7 @@ describe('<Main />', () => {
   test('dont show cards', async () => {
     render(<Main />);
     const out = await waitFor(() => {
-      screen.getByText(/Rick/);
+      screen.getByText(/Invalid/);
     });
     expect(out).toBeFalsy();
   });
