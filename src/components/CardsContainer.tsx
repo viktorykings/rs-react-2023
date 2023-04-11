@@ -2,23 +2,10 @@ import React from 'react';
 import Card from './Card';
 import { MainState } from './types';
 
-export const CardsContainer = ({ cards }: MainState) => {
+const CardsContainer = ({ cards, fetchSingleCard }: MainState) => {
   return (
-    <div className="cards-container">
-      {cards.length &&
-        cards.map((el, id) => (
-          <Card
-            key={id}
-            name={el.name}
-            surname={el.surname}
-            isBirthDateVis={el.isBirthDateVis}
-            region={el.region}
-            sex={el.sex}
-            birthDate={el.birthDate}
-            profilePic={el.profilePic}
-            personalData={el.personalData}
-          />
-        ))}
+    <div className="cards-container" role="contentinfo" onClick={fetchSingleCard}>
+      {cards && cards.map((el) => <Card key={el.id} id={el.id} name={el.name} image={el.image} />)}
     </div>
   );
 };

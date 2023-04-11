@@ -18,19 +18,31 @@ export interface FormSetState {
 }
 
 export interface FormData {
-  name: string | null | undefined;
-  surname: string | null | undefined;
-  birthDate: string | null | undefined;
-  region: string | null | undefined;
-  profilePicList?: FileList | Blob[];
-  profilePic: string;
-  isBirthDateVis: boolean | undefined;
-  personalData: boolean | undefined;
-  sex: string | null | undefined;
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string | null | undefined;
+  origin: { name: string };
+  location: { name: string };
+  image: string;
   errors?: Errors;
+  personalData?: boolean;
+  picList?: Blob[];
+}
+export interface CardPrewiew {
+  id: number;
+  name: string;
+  image: string;
+}
+export interface SingleCard {
+  card: FormData;
+  handleCloseSingleCard: (e: React.MouseEvent<HTMLElement>) => void;
 }
 export interface MainState {
   cards: FormData[];
+  fetchSingleCard?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 export interface FormState {
   data: FormData[];
@@ -42,4 +54,7 @@ export interface Errors {
 }
 export interface ModalState {
   saved: boolean;
+}
+export interface QueryValues {
+  name: string;
 }

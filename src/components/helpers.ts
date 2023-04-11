@@ -6,4 +6,5 @@ const errorsMsg = {
   invalidDate: 'Enter correct date',
   termsOFUse: 'You must accept the terms of use',
 };
+
 export default errorsMsg;
