@@ -44,7 +44,6 @@ const Main = () => {
   return (
     <main className="main">
       <Search handleSearch={handleSearch} />
-      {isPending && <div>Loading...</div>}
       {!isPending && !err && cards && (
         <CardsContainer cards={cards} fetchSingleCard={fetchSingleCard} />
       )}
