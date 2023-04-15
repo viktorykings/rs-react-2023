@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Icon from '../assets/search-icon.png';
+import { useAppDispatch, useAppSelector } from '../hooks/useTypesSelector';
+import { fetchCards } from '../store/action-creator/card';
+
 type SearchVal = {
   handleSearch: (name: string) => void;
 };
 
 const Search = ({ handleSearch }: SearchVal) => {
-  const [searchVal, setSearchVal] = useState(localStorage.getItem('search') ?? '');
-  useEffect(() => {
-    return () => {
-      localStorage.setItem('search', searchVal);
-    };
-  }, [searchVal]);
+  const {search} = useAppSelector(state => state.cards)
+  const [searchVal, setSearchVal] = useState(search);
+  const dispatch = useAppDispatch()
+
+  // useEffect(() => {
+  //   return () => {
+  //     localStorage.setItem('search', searchVal);
+  //   };
+  // }, [searchVal]);
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
-      handleSearch(searchVal);
+      dispatch(fetchCards(searchVal))
     }
   };
   return (

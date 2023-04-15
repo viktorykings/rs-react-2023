@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
 import cardsReducer from './cardsReducer'
-import { searchReducer } from './searchReducer'
+import { formCardsReducer } from './formCardsReducer'
 export const rootReducer = combineReducers({
     cards: cardsReducer,
-    search: searchReducer
+    formCards: formCardsReducer
 })
 export type RootState = ReturnType<typeof rootReducer>

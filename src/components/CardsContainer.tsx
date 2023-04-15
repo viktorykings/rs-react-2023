@@ -6,10 +6,10 @@ import { useDispatch } from 'react-redux';
 import { fetchCards } from '../store/action-creator/card';
 
 const CardsContainer = ({ fetchSingleCard }: MainState) => {
-  const {cards, isLoading, errors} = useAppSelector(state => state.cards)
+  const {cards, isLoading, errors, search} = useAppSelector(state => state.cards)
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(fetchCards())
+    dispatch(fetchCards(search))
     console.log(cards)
   }, [])
   if(isLoading){

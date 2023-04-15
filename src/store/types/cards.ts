@@ -7,6 +7,7 @@ export enum cardsActionTypes {
 }
 
 export interface CardsState {
+    search: string
     cards: CardPrewiew[];
     isLoading: boolean;
     errors: null | string
@@ -14,10 +15,12 @@ export interface CardsState {
 
 interface FetchCardsAction{
     type: cardsActionTypes.FETCH_CARDS
+    search: string
 }
 interface FetchCardsSuccessAction{
     type: cardsActionTypes.FETCH_CARDS_SUCCESS,
     payload: CardPrewiew[]
+    search: string
 }
 interface FetchCardsErrorAction{
     type: cardsActionTypes.FETCH_CARDS_ERROR,

@@ -3,16 +3,24 @@ import SuccessModal from './SuccessModal';
 import { FormSetState, FormData } from './types';
 import errorsMsg from './helpers';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useAppDispatch } from '../hooks/useTypesSelector';
+import { getFormCards } from '../store/action-creator/formCards';
 
-const Form = ({ createCard }: FormSetState) => {
+const Form = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful },
   } = useForm<FormData>();
+    const dispatch = useAppDispatch()
+
+  // const createCard = (newCard: FormData) => {
+  //   dispatch(getFormCards(newCard));
+  // };
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    createCard({ ...data, image: URL.createObjectURL(data.picList![0]), id: Date.now() });
+    // createCard({ ...data, image: URL.createObjectURL(data.image[0] as unknown as Blob), id: Date.now() });
+    dispatch(getFormCards({ ...data, image: URL.createObjectURL(data.image[0] as unknown as Blob), id: Date.now() }));
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
@@ -121,7 +129,7 @@ const Form = ({ createCard }: FormSetState) => {
               type="file"
               id="profilePicture"
               accept="image/*"
-              {...register('picList', { required: true })}
+              {...register('image', { required: true })}
             />
             {errors.image && <p className="error">{errorsMsg.file}</p>}
           </div>

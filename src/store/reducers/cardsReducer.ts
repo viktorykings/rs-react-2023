@@ -1,6 +1,7 @@
 import { CardsAction, CardsState, cardsActionTypes } from '../types/cards';
 
 const initialState: CardsState = {
+    search: '',
     cards: [],
     isLoading: false,
     errors: null
@@ -9,11 +10,11 @@ const initialState: CardsState = {
 const cardsReducer = (state = initialState, action: CardsAction): CardsState => {
     switch(action.type){
         case cardsActionTypes.FETCH_CARDS:
-            return {cards: [], isLoading: true, errors: null}
+            return {search: action.search, cards: [], isLoading: true, errors: null}
         case cardsActionTypes.FETCH_CARDS_SUCCESS:
-            return {cards: action.payload, isLoading: false, errors: null}
+            return {search: action.search, cards: action.payload, isLoading: false, errors: null}
         case cardsActionTypes.FETCH_CARDS_ERROR:
-            return {cards: [], isLoading: true, errors: action.payload}
+            return {search: '', cards: [], isLoading: true, errors: action.payload}
         default:
         return state
     }
