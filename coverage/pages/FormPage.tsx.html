@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/FullInfoCard.tsx</title>
+    <title>Code coverage report for pages/FormPage.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> FullInfoCard.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">pages</a> FormPage.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -91,50 +91,50 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { SingleCard } from './types';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Form from '../components/Form';
+import { FormData } from '../components/types';
+import React, { useState } from 'react';
+import CardsContainer from '../components/CardsContainer';
+import Card from '../components/Card';
+import { useAppDispatch, useAppSelector } from '../hooks/useTypesSelector';
+import { getFormCards } from '../store/action-creator/formCards';
 &nbsp;
-const FullInfoCard = ({ card, handleCloseSingleCard }: SingleCard) =&gt; {
+const FormPage = () =&gt; {
+  const {cards} = useAppSelector(state =&gt; state.formCards)
+&nbsp;
+  // const [cards, setCards] = useState&lt;FormData[]&gt;([]);
+&nbsp;
   return (
-    &lt;div className="backdrop" data-testid="backdrop" onClick={handleCloseSingleCard}&gt;
-      &lt;div className="card-full"&gt;
-        &lt;img src={card.image} alt="img" className="image" /&gt;
-        &lt;div className="info"&gt;
-          &lt;h5&gt;{card.name}&lt;/h5&gt;
-          &lt;p&gt;{card.status}&lt;/p&gt;
-          &lt;p&gt;{card.species}&lt;/p&gt;
-          &lt;p&gt;{card.type}&lt;/p&gt;
-          &lt;p&gt;{card.location.name}&lt;/p&gt;
-          &lt;p&gt;{card.origin.name}&lt;/p&gt;
-          &lt;p&gt;{card.gender}&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;button className="close-btn"&gt;x&lt;/button&gt;
+    &lt;div className="container"&gt;
+      &lt;Form /&gt;
+      &lt;div className="cards-container" role="contentinfo"&gt;
+        {cards.map((el) =&gt; &lt;Card key={el.id} id={el.id} name={el.name} image={el.image} /&gt;)}
       &lt;/div&gt;
     &lt;/div&gt;
   );
 };
 &nbsp;
-export default FullInfoCard;
+export default FormPage;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

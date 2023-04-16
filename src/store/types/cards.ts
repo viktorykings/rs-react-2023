@@ -13,8 +13,8 @@ export interface CardsState {
     errors: null | string
 }
 
-interface FetchCardsAction{
-    type: cardsActionTypes.FETCH_CARDS
+export interface FetchCardsAction{
+    // type: cardsActionTypes.FETCH_CARDS
     search: string
 }
 interface FetchCardsSuccessAction{
@@ -25,5 +25,6 @@ interface FetchCardsSuccessAction{
 interface FetchCardsErrorAction{
     type: cardsActionTypes.FETCH_CARDS_ERROR,
     payload: string
+    search: string
 }
 export type CardsAction = FetchCardsAction |FetchCardsSuccessAction | FetchCardsErrorAction;
