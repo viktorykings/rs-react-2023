@@ -1,28 +1,25 @@
-import React, { PropsWithChildren } from 'react'
 import { render } from '@testing-library/react'
 import type { RenderOptions } from '@testing-library/react'
-import { configureStore } from '@reduxjs/toolkit'
-import type { PreloadedState } from '@reduxjs/toolkit'
-import { Provider } from 'react-redux';
-
+import React, { PropsWithChildren } from 'react'
+import { Provider } from 'react-redux'
+import { setupStore } from '../../store'
 import type { AppStore, RootState } from '../../store'
-// As a basic setup, import your same slice reducers
-import { rootReducer } from '../../store/reducers'
-import cardsReducer from '../../store/reducers/cardsReducer'
+import type { PreloadedState } from '@reduxjs/toolkit'
 
 // This type interface extends the default options for render from RTL, as well
-// as allows the user to specify other things such as initialState, store.
+// as allows the user to specify other things such as initialState, store. For
+// future dependencies, such as wanting to test with react-router, you can extend
+// this interface to accept a path and route and use those in a <MemoryRouter />
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>
   store?: AppStore
 }
 
-export function renderWithProviders(
+function renderWithProviders(
   ui: React.ReactElement,
   {
     preloadedState = {},
-    // Automatically create a store instance if no store was passed in
-    store = configureStore({ reducer: rootReducer, preloadedState }),
+    store = setupStore(preloadedState),
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
@@ -31,3 +28,5 @@ export function renderWithProviders(
   }
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) }
 }
+
+export { renderWithProviders }

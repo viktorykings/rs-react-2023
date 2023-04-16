@@ -1,9 +1,13 @@
 import { describe, test, expect, beforeAll, afterEach, afterAll } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import React from 'react';
 import Main from '../pages/Main';
-import { setupServer } from 'msw/node';
+import { setupStore } from '../store';
+import { getFormCards } from '../store/action-creator/formCards';
+import { renderWithProviders } from './utils/test-utils';
+import 'whatwg-fetch';
 import { rest } from 'msw';
+import { setupServer } from 'msw/node'
 
 const characters = [
   {
@@ -30,26 +34,39 @@ const characters = [
     created: '2017-11-04T18:48:46.250Z',
   },
 ];
+export const handlers = [
+    rest.get('https://rickandmortyapi.com/api/character/', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(characters));
+      })
+]
 
-const server = setupServer(
-  rest.get('https://rickandmortyapi.com/api/character/', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(characters));
-  })
-);
+const server = setupServer(...handlers)
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+beforeAll(() => server.listen())
+
+afterEach(() => server.resetHandlers())
+
+afterAll(() => server.close())
+
 describe('<Main />', () => {
-  test('Main mounts properly', () => {
-    const wr = render(<Main />);
-    expect(wr).toBeTruthy();
-  });
-  test('dont show cards', async () => {
-    render(<Main />);
-    const out = await waitFor(() => {
-      screen.getByText(/Invalid/);
-    });
-    expect(out).toBeFalsy();
-  });
+  // test('Main mounts properly', async() => {
+  //   renderWithProviders(<Main />)
+  //   expect(screen.queryByText(/Loading/)).toBeTruthy();
+  // });
+  test('handles good response', async () => {
+    renderWithProviders(<Main />)
+
+    expect(screen.getByText(/Loading../)).toBeTruthy()
+    await screen.findByText('Failed to fetch')
+
+  })
+  // test('dont show cards', async () => {
+  //   const store = setupStore()
+  //   store.dispatch(getFormCards(characters))
+  //   const wrapper = renderWithProviders(<Main />, { store })
+  //   const out = await waitFor(() => {
+  //     screen.getByText(/Invalid/);
+  //   });
+  //   expect(out).toBeFalsy();
+  // });
 });

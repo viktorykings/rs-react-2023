@@ -17,15 +17,13 @@ const Form = () => {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     dispatch(getFormCards({ ...data, image: URL.createObjectURL(data.image[0] as unknown as Blob), id: Date.now() }));
+    reset();
+    setIsModalVisible(true);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-      setIsModalVisible(true);
-      setTimeout(() => setIsModalVisible(false), 2000);
-    }
-  }, [reset, isSubmitSuccessful]);
+    setTimeout(() => setIsModalVisible(false), 2000);
+  }, [isModalVisible]);
   return (
     <div className="form-container">
       <form action="" className="form" data-testid="form" onSubmit={handleSubmit(onSubmit)}>

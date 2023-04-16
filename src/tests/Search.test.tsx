@@ -1,21 +1,18 @@
 import { describe, test, expect, vi } from 'vitest';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import React from 'react';
 import Search from '../components/Search';
 import { renderWithProviders } from './utils/test-utils';
 import { setupStore } from '../store';
 import { saveSearchValue } from '../store/action-creator/searchValue';
-import { Dispatch } from "redux"
-import { SearchAction } from '../store/types/search';
-
 
 describe('search init state', () => {
-  const initialTodos = {search: 'a'}
+  const initialSearch = {search: 'a'}
 
   test('Uses preloaded state to render', () => {
     const { getByRole } = renderWithProviders(<Search />, {
       preloadedState: {
-        search: initialTodos
+        search: initialSearch
       }
     })
     expect((getByRole('searchbox') as HTMLInputElement).defaultValue).toBe('a')
@@ -23,7 +20,7 @@ describe('search init state', () => {
   test('The input field is exist', () => {
     const { getByRole } = renderWithProviders(<Search />, {
       preloadedState: {
-        search: initialTodos
+        search: initialSearch
       }
     })
     expect(getByRole('searchbox')).toBeTruthy();
@@ -31,7 +28,6 @@ describe('search init state', () => {
   test('The input field is changing', () => {
     const store = setupStore()
     store.dispatch(saveSearchValue('milk'))
-  
     const { getByRole } = renderWithProviders(<Search />, { store })
     const input = getByRole('searchbox') as HTMLInputElement
       fireEvent.change(input, {
