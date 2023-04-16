@@ -15,11 +15,7 @@ const Form = () => {
   } = useForm<FormData>();
     const dispatch = useAppDispatch()
 
-  // const createCard = (newCard: FormData) => {
-  //   dispatch(getFormCards(newCard));
-  // };
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    // createCard({ ...data, image: URL.createObjectURL(data.image[0] as unknown as Blob), id: Date.now() });
     dispatch(getFormCards({ ...data, image: URL.createObjectURL(data.image[0] as unknown as Blob), id: Date.now() }));
   };
   const [isModalVisible, setIsModalVisible] = useState(false);

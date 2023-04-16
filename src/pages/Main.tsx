@@ -1,28 +1,13 @@
 import CardsContainer from '../components/CardsContainer';
 import FullInfoCard from '../components/FullInfoCard';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Search from '../components/Search';
-import { FormData } from '../components/types';
 import fetchCards from './fetch';
 
 const Main = () => {
-  const [cards, setCards] = useState<FormData[]>([]);
-  const [isPending, setIsPending] = useState(true);
   const [isVisible, setisVisible] = useState(false);
   const [fullCard, setFullCard] = useState(null);
-  const [err, setErr] = useState(null);
 
-  const handleSearch = async (name: string) => {
-    setIsPending(true);
-    const data = await fetchCards(name).catch((e) => {
-      setErr(e.message);
-    });
-    if (data) {
-      setCards(data.results);
-      setErr(null);
-    }
-    setIsPending(false);
-  };
   const fetchSingleCard = async (e: React.MouseEvent<HTMLElement>) => {
     const id = (e.target as Element).closest('.card')?.id;
     if (id) {
@@ -38,19 +23,14 @@ const Main = () => {
       setisVisible(false);
     }
   };
-  useEffect(() => {
-    handleSearch('');
-  }, []);
+
   return (
     <main className="main">
-      <Search handleSearch={handleSearch} />
-      {!isPending && !err && cards && (
-        <CardsContainer cards={cards} fetchSingleCard={fetchSingleCard} />
-      )}
-      {!isPending && fullCard && isVisible && (
+      <Search />
+      <CardsContainer fetchSingleCard={fetchSingleCard} />
+      {isVisible && fullCard && (
         <FullInfoCard card={fullCard} handleCloseSingleCard={handleCloseSingleCard} />
       )}
-      {!isPending && err && <p>{err}</p>}
     </main>
   );
 };

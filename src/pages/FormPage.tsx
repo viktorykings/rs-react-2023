@@ -9,8 +9,6 @@ import { getFormCards } from '../store/action-creator/formCards';
 const FormPage = () => {
   const {cards} = useAppSelector(state => state.formCards)
 
-  // const [cards, setCards] = useState<FormData[]>([]);
-
   return (
     <div className="container">
       <Form />
