@@ -29,7 +29,6 @@ export interface FormData {
   image: string;
   errors?: Errors;
   personalData?: boolean;
-  picList?: Blob[];
 }
 export interface CardPrewiew {
   id: number;
@@ -41,7 +40,6 @@ export interface SingleCard {
   handleCloseSingleCard: (e: React.MouseEvent<HTMLElement>) => void;
 }
 export interface MainState {
-  cards: FormData[];
   fetchSingleCard?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 export interface FormState {

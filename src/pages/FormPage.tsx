@@ -1,17 +1,19 @@
 import Form from '../components/Form';
-import { FormData } from '../components/types';
-import React, { useState } from 'react';
-import CardsContainer from '../components/CardsContainer';
+import React from 'react';
+import Card from '../components/Card';
+import { useAppSelector } from '../hooks/useTypesSelector';
 
 const FormPage = () => {
-  const [cards, setCards] = useState<FormData[]>([]);
-  const createCard = (newCard: FormData) => {
-    setCards([...cards, newCard]);
-  };
+  const { cards } = useAppSelector((state) => state.formCards);
+
   return (
     <div className="container">
-      <Form createCard={createCard} />
-      <CardsContainer cards={cards} />
+      <Form />
+      <div className="cards-container" role="contentinfo">
+        {cards.map((el) => (
+          <Card key={el.id} id={el.id} name={el.name} image={el.image} />
+        ))}
+      </div>
     </div>
   );
 };

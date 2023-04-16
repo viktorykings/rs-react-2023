@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import SuccessModal from './SuccessModal';
-import { FormSetState, FormData } from './types';
+import { FormData } from './types';
 import errorsMsg from './helpers';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useAppDispatch } from '../hooks/useTypesSelector';
+import { getFormCards } from '../store/action-creator/formCards';
 
-const Form = ({ createCard }: FormSetState) => {
+const Form = () => {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<FormData>();
+  const dispatch = useAppDispatch();
+
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    createCard({ ...data, image: URL.createObjectURL(data.picList![0]), id: Date.now() });
+    dispatch(
+      getFormCards({
+        ...data,
+        image: URL.createObjectURL(data.image[0] as unknown as Blob),
+        id: Date.now(),
+      })
+    );
+    reset();
+    setIsModalVisible(true);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-      setIsModalVisible(true);
-      setTimeout(() => setIsModalVisible(false), 2000);
-    }
-  }, [reset, isSubmitSuccessful]);
+    setTimeout(() => setIsModalVisible(false), 2000);
+  }, [isModalVisible]);
   return (
     <div className="form-container">
       <form action="" className="form" data-testid="form" onSubmit={handleSubmit(onSubmit)}>
@@ -121,7 +129,7 @@ const Form = ({ createCard }: FormSetState) => {
               type="file"
               id="profilePicture"
               accept="image/*"
-              {...register('picList', { required: true })}
+              {...register('image', { required: true })}
             />
             {errors.image && <p className="error">{errorsMsg.file}</p>}
           </div>
