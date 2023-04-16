@@ -29,7 +29,6 @@ export interface FormData {
   image: string;
   errors?: Errors;
   personalData?: boolean;
-  // picList?: Blob[];
 }
 export interface CardPrewiew {
   id: number;

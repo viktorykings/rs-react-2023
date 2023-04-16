@@ -6,7 +6,7 @@ import { getFormCards } from '../store/action-creator/formCards';
 import { renderWithProviders } from './utils/test-utils';
 
 describe('<FormPage />', () => {
-  const character =   {
+  const character = {
     id: 1,
     name: 'Rick Sanchez',
     status: 'Alive',
@@ -28,11 +28,11 @@ describe('<FormPage />', () => {
     ],
     url: 'https://rickandmortyapi.com/api/character/1',
     created: '2017-11-04T18:48:46.250Z',
-  }
+  };
   test('FormPage mounts properly', () => {
-    const store = setupStore()
-    store.dispatch(getFormCards(character))
-    const wrapper = renderWithProviders(<FormPage />, { store })
+    const store = setupStore();
+    store.dispatch(getFormCards(character));
+    const wrapper = renderWithProviders(<FormPage />, { store });
     expect(wrapper).toBeTruthy();
   });
 });

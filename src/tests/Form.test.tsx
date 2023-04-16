@@ -1,5 +1,4 @@
-import { describe, test, expect, vi } from 'vitest';
-import { fireEvent, screen } from '@testing-library/react';
+import { describe, test, expect } from 'vitest';
 import React from 'react';
 import Form from '../components/Form';
 import { setupStore } from '../store';
@@ -18,9 +17,9 @@ describe('<Form />', () => {
     location: { name: '' },
     image: '',
   };
-  const store = setupStore()
-  store.dispatch(getFormCards(card))
-  const wrapper = renderWithProviders(<Form />, { store })
+  const store = setupStore();
+  store.dispatch(getFormCards(card));
+  const wrapper = renderWithProviders(<Form />, { store });
   test('Form mounts properly', () => {
     expect(wrapper).toBeTruthy();
   });
@@ -32,4 +31,4 @@ describe('<Form />', () => {
     const error = document.querySelector('error');
     expect(error).toBeFalsy();
   });
- });
+});

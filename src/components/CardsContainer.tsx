@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import Card from './Card';
-import {useAppSelector} from '../hooks/useTypesSelector';
+import { useAppSelector } from '../hooks/useTypesSelector';
 import { rickAndMortyApi } from '../services/rickAndMorty';
 import FullInfoCard from './FullInfoCard';
-import { FormData } from './types'
+import { FormData } from './types';
 
 const CardsContainer = () => {
-  const {search} = useAppSelector(state => state.search)
-  const { data: characters, error, isLoading } = rickAndMortyApi.useGetCharackterByNameQuery(search)
+  const { search } = useAppSelector((state) => state.search);
+  const {
+    data: characters,
+    error,
+    isLoading,
+  } = rickAndMortyApi.useGetCharackterByNameQuery(search);
 
   const [isVisible, setisVisible] = useState(false);
   const [fullCard, setFullCard] = useState<null | FormData>(null);
@@ -25,16 +29,19 @@ const CardsContainer = () => {
       setFullCard(characters.results[parseInt(id) - 1]);
       setisVisible(true);
     }
+  };
+  if (isLoading) {
+    return <h5>Loading....</h5>;
   }
-  if(isLoading){
-    return <h5>Loading....</h5>
-  }
-  if(error){
-    return <h5>Failed to fetch</h5>
+  if (error) {
+    return <h5>Failed to fetch</h5>;
   }
   return (
     <div className="cards-container" role="contentinfo" onClick={showFullCard}>
-      {characters && characters.results.map((el) => <Card key={el.id} id={el.id} name={el.name} image={el.image} />)}
+      {characters &&
+        characters.results.map((el) => (
+          <Card key={el.id} id={el.id} name={el.name} image={el.image} />
+        ))}
       {isVisible && fullCard && (
         <FullInfoCard card={fullCard} handleCloseSingleCard={handleCloseSingleCard} />
       )}

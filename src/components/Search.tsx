@@ -4,13 +4,13 @@ import { useAppDispatch, useAppSelector } from '../hooks/useTypesSelector';
 import { saveSearchValue } from '../store/action-creator/searchValue';
 
 const Search = () => {
-  const {search} = useAppSelector(state => state.search)
+  const { search } = useAppSelector((state) => state.search);
   const [searchVal, setSearchVal] = useState(search);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
-      dispatch(saveSearchValue(searchVal))
+      dispatch(saveSearchValue(searchVal));
     }
   };
   return (

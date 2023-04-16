@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SuccessModal from './SuccessModal';
-import { FormSetState, FormData } from './types';
+import { FormData } from './types';
 import errorsMsg from './helpers';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useAppDispatch } from '../hooks/useTypesSelector';
@@ -11,12 +11,18 @@ const Form = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<FormData>();
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    dispatch(getFormCards({ ...data, image: URL.createObjectURL(data.image[0] as unknown as Blob), id: Date.now() }));
+    dispatch(
+      getFormCards({
+        ...data,
+        image: URL.createObjectURL(data.image[0] as unknown as Blob),
+        id: Date.now(),
+      })
+    );
     reset();
     setIsModalVisible(true);
   };

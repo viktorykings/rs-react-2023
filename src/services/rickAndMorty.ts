@@ -1,8 +1,8 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { FormData } from '../components/types'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import type { FormData } from '../components/types';
 
 interface QueryRes {
-  results: FormData[]
+  results: FormData[];
 }
 export const rickAndMortyApi = createApi({
   reducerPath: 'rickAndMortyApi',
@@ -12,11 +12,11 @@ export const rickAndMortyApi = createApi({
       query: (name: string) => ({
         url: 'character/',
         params: {
-          name: name
-        }
-      })
+          name: name,
+        },
+      }),
     }),
   }),
-})
+});
 
-export const { useGetCharackterByNameQuery } = rickAndMortyApi
+export const { useGetCharackterByNameQuery } = rickAndMortyApi;
