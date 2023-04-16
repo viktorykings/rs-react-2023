@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import cardsReducer from './cardsReducer'
+import { searchReducer } from './searchReducer'
 import { formCardsReducer } from './formCardsReducer'
 import { rickAndMortyApi } from '../../services/rickAndMorty'
 export const rootReducer = combineReducers({
-    cards: cardsReducer,
+    search: searchReducer,
     formCards: formCardsReducer,
     [rickAndMortyApi.reducerPath]: rickAndMortyApi.reducer
 })
