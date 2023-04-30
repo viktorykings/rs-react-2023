@@ -1,3 +1,3 @@
-export const entry = 'entry'
+export const entry = 'entry';
 
-export const assets = 'assets'
+export const assets = 'assets';

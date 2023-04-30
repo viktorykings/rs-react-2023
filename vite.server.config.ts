@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import { assets } from './config';
-import baseConfig, { pathResolver } from './vite.config'
+import baseConfig, { pathResolver } from './vite.config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,7 +16,7 @@ export default defineConfig({
         chunkFileNames: `${assets}/[name].js`,
         // 资源文件名 css 图片等等
         assetFileNames: `${assets}/[name].[ext]`,
-      }
-    }
-  }
+      },
+    },
+  },
 });
