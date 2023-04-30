@@ -1,23 +1,4 @@
-// /// <reference types="vitest" />
-// import { defineConfig } from 'vite';
-// import react from '@vitejs/plugin-react';
-
-// export default defineConfig({
-//   plugins: [react()],
-//   test: {
-//     globals: true,
-//     environment: 'happy-dom',
-//   },
-// });
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// export default defineConfig({
-//   plugins: [react()],
-//   build: {
-//     minify: false,
-//   },
-// })
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
@@ -27,7 +8,6 @@ export const pathResolver = (pathStr: string) => {
   return resolve(__dirname, '.', pathStr);
 };
 
-// https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
@@ -36,21 +16,13 @@ export default defineConfig({
   },
   plugins: [react()],
   build: {
-    // terserOptions: {
-    //   compress: {
-    //     drop_console: false
-    //   }
-    // },
     rollupOptions: {
       input: {
         [entry]: pathResolver('./src/entry-client.tsx'),
       },
       output: {
-        // 入口文件名
         entryFileNames: `${assets}/[name].js`,
-        // 块文件名
         chunkFileNames: `${assets}/[name].js`,
-        // 资源文件名 css 图片等等
         assetFileNames: `${assets}/[name].[ext]`,
       },
     },
