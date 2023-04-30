@@ -3,8 +3,8 @@
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
     "jsx": "react",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
@@ -16,5 +16,9 @@
     "resolveJsonModule": true,
     "typeRoots": [ "./node_modules/@types" ]
   },
-  "include": ["./src/**/*", "styled.d.ts", "vite.config.ts", ".eslintrc.json"]
+  "ts-node": {
+    "esm": true
+  },
+  "include": ["./src/**/*", "styled.d.ts", "vite.config.ts", ".eslintrc.json", "server.ts", "node_modules/vite/types/*"]
 }
+
