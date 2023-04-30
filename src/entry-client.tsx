@@ -1,22 +1,14 @@
 import React from "react";
-import { createRoot, hydrateRoot } from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import store from './store'
 import "./index.css";
+import { Provider } from "react-redux";
 
-const container = document.getElementById("root");
-
-const FullApp = () => (
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  hydrateRoot(document.getElementById('root') as HTMLElement, <Provider store={store}>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+</Provider>
 );
-
-if (import.meta.hot || !container?.innerText) {
-  const root = createRoot(container!);
-  root.render(<FullApp />);
-} else {
-  hydrateRoot(container!, <FullApp />);
-}
